@@ -210,6 +210,15 @@
                 max-width: 1100px;
             }
 
+            /* ── PROGRAM IMAGE (float) ── */
+            .program-image {
+                float: right;
+                width: 340px;
+                margin: 0.25rem 0 1.5rem 2.5rem;
+                border-radius: 10px;
+                object-fit: cover;
+            }
+
             .program-text p {
                 font-size: 1.05rem;
                 color: var(--gray-dark);
@@ -428,6 +437,13 @@
                     max-width: 345px;
                 }
 
+                .program-image {
+                    float: none;
+                    width: 100%;
+                    max-height: 280px;
+                    margin: 0 0 1.5rem 0;
+                }
+
                 .impact-grid {
                     grid-template-columns: 1fr;
                     gap: 1rem;
@@ -583,6 +599,11 @@
                     <h2 class="section-heading">
                         A creative haven at the heart of the community
                     </h2>
+                    <img
+                        src="img/ethan-julia-fablab.png"
+                        alt="Ethan and Julia at the Salt Spring Island FabLab"
+                        class="program-image"
+                    />
                     <p>
                         The
                         <a
