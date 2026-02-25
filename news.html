@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Ethan Wilding" />
+    <meta name="keywords" content="Wilding Foundation, news, media, Salt Spring Island, FabLab, Catalyst Grants, SSNAP, GISS Robotics" />
+    <meta name="description" content="News and media coverage of the Wilding Foundation and the programs it supports on Salt Spring Island." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News &amp; Media - The Wilding Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-light: #8DB860;
+            --green-mid: #5A8A3C;
+            --green-dark: #3A6B2A;
+            --green-darkest: #2C4A25;
+            --black: #1a1a1a;
+            --gray-dark: #3a3a3a;
+            --gray-mid: #6b6b6b;
+            --gray-light: #e8e8e8;
+            --gray-lighter: #f5f5f4;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--black);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s ease;
+        }
+        nav.scrolled { box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06); }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 64px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-mid);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover { color: var(--green-mid); }
+        .nav-links a.active { color: var(--green-mid); }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--black);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--gray-mid);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .header-line {
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-dark), var(--green-light));
+            margin: 2rem auto 0;
+            border-radius: 1px;
+        }
+
+        /* ── NEWS LIST ── */
+        .news-section {
+            padding: 2rem 2rem 6rem;
+        }
+
+        .news-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .news-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .news-year:first-child {
+            margin-top: 0;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: baseline;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: background 0.2s ease;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gray-mid);
+            white-space: nowrap;
+            min-width: 90px;
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-content a {
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .news-content a:hover {
+            color: var(--green-mid);
+        }
+
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            margin-top: 0.3rem;
+            line-height: 1.6;
+        }
+
+        .news-tag {
+            display: inline-block;
+            margin-top: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--green-dark);
+            background: rgba(141, 184, 96, 0.12);
+            padding: 0.15rem 0.6rem;
+            border-radius: 100px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left p {
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        .footer-logo {
+            height: 28px;
+            opacity: 0.4;
+            transition: opacity 0.2s ease;
+        }
+        .footer-logo:hover { opacity: 0.7; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px; left: 0; right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                border-bottom: 1px solid var(--gray-light);
+            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: block; }
+            .page-header h1 { font-size: 2rem; }
+            .news-item { flex-direction: column; gap: 0.25rem; }
+            .news-date { min-width: unset; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+
+        /* ── ANIMATIONS ── */
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in {
+                opacity: 0;
+                transform: translateY(16px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#fablab">FabLab</a></li>
+                <li><a href="index.html#catalyst">Catalyst Grants</a></li>
+                <li><a href="index.html#robotics">Robotics</a></li>
+                <li><a href="news.html" class="active">News</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header fade-in">
+        <h1>News &amp; Media</h1>
+        <p>Coverage of the Wilding Foundation and the programs we support on Salt Spring Island.</p>
+        <div class="header-line"></div>
+    </div>
+
+    <!-- NEWS LIST -->
+    <section class="news-section">
+        <div class="news-inner">
+
+            <h2 class="news-year fade-in">2025</h2>
+
+            <div class="news-item fade-in">
+                <span class="news-date">2025</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/salt-springs-gustafson-wins-top-ssnap-prize/">Salt Spring&rsquo;s Gustafson wins top SSNAP prize</a>
+                    <p>Anna Gustafson takes the top award at the sixth biennial Salt Spring National Art Prize, a program closely connected to the Wilding Foundation&rsquo;s Catalyst Grants.</p>
+                    <span class="news-tag">Catalyst Grants</span>
+                </div>
+            </div>
+
+            <div class="news-item fade-in">
+                <span class="news-date">2025</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/librarys-fablab-delivers-3d-printed-accessibility/">Library&rsquo;s FabLab delivers 3D-printed accessibility</a>
+                    <p>The FabLab expands into fabricating assistive devices, including playing card holders, writing supports, pill pack openers, and 3D-printed prosthetics. All are delivered free of charge through the library&rsquo;s Visiting Library Services.</p>
+                    <span class="news-tag">FabLab</span>
+                </div>
+            </div>
+
+            <div class="news-item fade-in">
+                <span class="news-date">Feb 2025</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/fablab-offers-creative-haven-for-local-residents/">FabLab offers creative haven for local residents</a>
+                    <p>The Gulf Islands Driftwood profiles the FabLab as a beacon of innovation and creativity, highlighting the Wilding Foundation&rsquo;s funding that keeps the facility accessible and free for all.</p>
+                    <span class="news-tag">FabLab</span>
+                </div>
+            </div>
+
+            <h2 class="news-year fade-in">2024</h2>
+
+            <div class="news-item fade-in">
+                <span class="news-date">Nov 2024</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/catalyst-grant-artists-announced/">Catalyst Grant artists announced</a>
+                    <p>The first 16 recipients of the Catalyst Grants are named, sharing $100,000 in arts funding from the Wilding Foundation, selected from approximately 45 applications across the Southern Gulf Islands.</p>
+                    <span class="news-tag">Catalyst Grants</span>
+                </div>
+            </div>
+
+            <div class="news-item fade-in">
+                <span class="news-date">2024</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/editorial-smart-arts-funding/">Editorial: Smart arts funding</a>
+                    <p>The Driftwood editorial board highlights the Wilding Foundation and SSNAP&rsquo;s Catalyst Grants as a model for effective, artist-centered arts funding.</p>
+                    <span class="news-tag">Catalyst Grants</span>
+                </div>
+            </div>
+
+            <div class="news-item fade-in">
+                <span class="news-date">2024</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/wilding-foundation-and-ssnap-team-up-for-new-grants-program/">Wilding Foundation and SSNAP team up for new grants program</a>
+                    <p>The Foundation announces its partnership with the Salt Spring National Art Prize to launch the Catalyst Grants, committing $100,000 per year for at least three years to support visual artists.</p>
+                    <span class="news-tag">Catalyst Grants</span>
+                </div>
+            </div>
+
+            <h2 class="news-year fade-in">2023</h2>
+
+            <div class="news-item fade-in">
+                <span class="news-date">Feb 2023</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/giss-hosts-vex-robotics-tournament-and-enjoys-broad-community-support-throughout-the-year/">GISS hosts VEX robotics tournament with broad community support</a>
+                    <p>The GISS Cyber/Scorpions host their first regional VEX Robotics competition, welcoming 34 teams from Vancouver Island. The Wilding Foundation is recognized as a key financial supporter of the program.</p>
+                    <span class="news-tag">GISS Robotics</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>&copy; 2026 The Wilding Foundation</p>
+                <p>Salt Spring Island, BC &middot; Charity # 794054205 RR 0001</p>
+            </div>
+            <img src="wflogo_main.svg" alt="Wilding Foundation" class="footer-logo" />
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
+        });
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

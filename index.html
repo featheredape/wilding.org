@@ -1,603 +1,822 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="author" content="Ethan Wilding" />
-    <meta name="keywords" content="Ethan Wilding, Salt Spring Island, charity, philanthropy, technology, art, STEAM" />
-    <meta name="description" content="The Wilding Foundation supports initiatives that encourage skills development through the creative interplay of technology and art. A federally registered charity based on Salt Spring Island, BC." />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Wilding Foundation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --green-light: #8DB860;
-            --green-mid: #5A8A3C;
-            --green-dark: #3A6B2A;
-            --green-darkest: #2C4A25;
-            --black: #1a1a1a;
-            --gray-dark: #3a3a3a;
-            --gray-mid: #6b6b6b;
-            --gray-light: #e8e8e8;
-            --gray-lighter: #f5f5f4;
-            --white: #ffffff;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Ethan Wilding" />
+        <meta
+            name="keywords"
+            content="Ethan Wilding, Salt Spring Island, charity, philanthropy, technology, art, STEAM, FabLab, Catalyst Grants"
+        />
+        <meta
+            name="description"
+            content="The Wilding Foundation supports initiatives that encourage skills development through the creative interplay of technology and art. A federally registered charity based on Salt Spring Island, BC."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Wilding Foundation</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --green-light: #8db860;
+                --green-mid: #5a8a3c;
+                --green-dark: #3a6b2a;
+                --green-darkest: #2c4a25;
+                --black: #1a1a1a;
+                --gray-dark: #3a3a3a;
+                --gray-mid: #6b6b6b;
+                --gray-light: #e8e8e8;
+                --gray-lighter: #f5f5f4;
+                --white: #ffffff;
+            }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        html {
-            scroll-behavior: smooth;
-        }
+            html {
+                scroll-behavior: smooth;
+            }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--black);
-            background: var(--white);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+            body {
+                font-family:
+                    "Inter",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+                color: var(--black);
+                background: var(--white);
+                line-height: 1.7;
+                -webkit-font-smoothing: antialiased;
+            }
 
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            transition: box-shadow 0.3s ease;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .nav-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            height: 64px;
-        }
-
-        .nav-logo {
-            height: 38px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray-mid);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--green-mid);
-        }
-
-        /* mobile menu */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: var(--black);
-            margin: 4px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* ── HERO ── */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(141, 184, 96, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 680px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-logo {
-            max-width: 503px;
-            width: 100%;
-            height: auto;
-        }
-
-        /* ── SECTION SHARED ── */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--green-mid);
-            margin-bottom: 1rem;
-        }
-
-        .section-heading {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 1.25rem;
-            color: var(--black);
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            color: var(--gray-mid);
-            max-width: 560px;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-        }
-
-        /* ── ABOUT ── */
-        .about {
-            background: var(--gray-lighter);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--gray-dark);
-            line-height: 1.8;
-            margin-bottom: 1.25rem;
-        }
-
-        .about-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .about-visual svg {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-        }
-
-        /* ── PROJECTS ── */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--white);
-            border: 1px solid var(--gray-light);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--green-dark), var(--green-light));
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(90, 138, 60, 0.25);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            transform: translateY(-2px);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-node {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 2px solid var(--green-mid);
-            margin-bottom: 1.25rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--black);
-        }
-
-        .project-card h3 a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .project-card h3 a:hover {
-            color: var(--green-mid);
-        }
-
-        .project-card p {
-            font-size: 0.925rem;
-            color: var(--gray-mid);
-            line-height: 1.7;
-        }
-
-        .project-tag {
-            display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--green-dark);
-            background: rgba(141, 184, 96, 0.12);
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        /* ── IMPACT NUMBERS ── */
-        .impact {
-            background: var(--green-darkest);
-            color: var(--white);
-        }
-
-        .impact .section-label {
-            color: var(--green-light);
-        }
-
-        .impact .section-heading {
-            color: var(--white);
-        }
-
-        .impact .section-desc {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .impact-item {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .impact-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--green-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .impact-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.5;
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--gray-light);
-        }
-
-        .footer-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-left p {
-            font-size: 0.85rem;
-            color: var(--gray-mid);
-            line-height: 1.6;
-        }
-
-        .footer-logo {
-            height: 28px;
-            opacity: 0.4;
-            transition: opacity 0.2s ease;
-        }
-
-        .footer-logo:hover {
-            opacity: 0.7;
-        }
-
-        /* ── CIRCUIT ACCENT (decorative) ── */
-        .circuit-accent {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.06;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 64px;
+            /* ── NAV ── */
+            nav {
+                position: fixed;
+                top: 0;
                 left: 0;
                 right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1.5rem 2rem;
-                gap: 1.25rem;
-                border-bottom: 1px solid var(--gray-light);
+                z-index: 100;
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                transition: box-shadow 0.3s ease;
             }
 
-            .nav-links.open {
+            nav.scrolled {
+                box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 2rem;
                 display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                height: 64px;
             }
 
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--gray-mid);
+                font-size: 0.875rem;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                transition: color 0.2s ease;
+            }
+
+            .nav-links a:hover {
+                color: var(--green-mid);
+            }
+
+            /* mobile menu */
             .nav-toggle {
+                display: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+            }
+
+            .nav-toggle span {
                 display: block;
+                width: 20px;
+                height: 2px;
+                background: var(--black);
+                margin: 4px 0;
+                transition: all 0.3s ease;
+            }
+
+            /* ── HERO ── */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 6rem 2rem 4rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: -40%;
+                right: -20%;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(141, 184, 96, 0.06) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            .hero-content {
+                max-width: 680px;
+                position: relative;
+                z-index: 1;
             }
 
             .hero-logo {
-                max-width: 345px;
+                max-width: 503px;
+                width: 100%;
+                height: auto;
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            /* ── SECTION SHARED ── */
+            section {
+                padding: 6rem 2rem;
             }
 
-            .about-visual {
-                order: -1;
+            .section-inner {
+                max-width: 1100px;
+                margin: 0 auto;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .section-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--green-mid);
+                margin-bottom: 1rem;
+            }
+
+            .section-heading {
+                font-size: 2rem;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 1.2;
+                margin-bottom: 1.25rem;
+                color: var(--black);
+            }
+
+            .section-desc {
+                font-size: 1.05rem;
+                color: var(--gray-mid);
+                max-width: 640px;
+                line-height: 1.8;
+                margin-bottom: 2.5rem;
+            }
+
+            /* ── PROGRAM SECTIONS ── */
+            .program-section {
+                position: relative;
+            }
+
+            .program-section.alt-bg {
+                background: var(--gray-lighter);
+            }
+
+            .program-text {
+                max-width: 1100px;
+            }
+
+            .program-text p {
+                font-size: 1.05rem;
+                color: var(--gray-dark);
+                line-height: 1.8;
+                margin-bottom: 1.25rem;
+            }
+
+            .program-text a {
+                color: var(--green-mid);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s ease;
+            }
+
+            .program-text a:hover {
+                color: var(--green-dark);
+            }
+
+            .program-stat {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-top: 0.5rem;
+                padding: 0.4rem 1rem;
+                background: rgba(141, 184, 96, 0.1);
+                border-radius: 100px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: var(--green-dark);
+            }
+
+            .stat-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                margin-top: 1rem;
+            }
+
+            /* ── QUOTE ── */
+            .quote {
+                margin: 1.5rem 0;
+                padding-left: 1.25rem;
+                border-left: 3px solid var(--green-light);
+                font-style: italic;
+                color: var(--gray-mid);
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            /* ── NEWS & UPDATES ── */
+            .news {
+                background: #f4f7f1;
+            }
+
+            .news-list {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                margin-bottom: 2.5rem;
+            }
+
+            .news-item {
+                display: flex;
+                gap: 1.5rem;
+                align-items: baseline;
+                padding: 1.25rem 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                transition: padding-left 0.2s ease;
+            }
+
+            .news-item:first-child {
+                border-top: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .news-item:hover {
+                padding-left: 0.5rem;
+            }
+
+            .news-date {
+                font-size: 0.8rem;
+                font-weight: 500;
+                color: var(--green-mid);
+                white-space: nowrap;
+                min-width: 90px;
+            }
+
+            .news-content {
+                flex: 1;
+            }
+
+            .news-content a {
+                color: var(--black);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 0.95rem;
+                transition: color 0.2s ease;
+            }
+
+            .news-content a:hover {
+                color: var(--green-mid);
+            }
+
+            .news-content p {
+                font-size: 0.875rem;
+                color: var(--gray-mid);
+                margin-top: 0.25rem;
+                line-height: 1.6;
+            }
+
+            .btn-see-more {
+                display: inline-block;
+                padding: 0.7rem 1.75rem;
+                border: 1px solid var(--gray-light);
+                border-radius: 8px;
+                color: var(--black);
+                text-decoration: none;
+                font-size: 0.875rem;
+                font-weight: 500;
+                transition: all 0.2s ease;
+            }
+
+            .btn-see-more:hover {
+                background: var(--white);
+                border-color: var(--green-mid);
+                color: var(--green-mid);
+            }
+
+            /* ── IMPACT NUMBERS ── */
+            .impact {
+                background: var(--white);
             }
 
             .impact-grid {
-                grid-template-columns: 1fr;
-                gap: 0;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
             }
 
             .impact-item {
-                padding: 1.5rem 1rem;
+                text-align: center;
+                padding: 2.5rem 1rem;
+                border: 1px solid var(--gray-light);
+                border-radius: 12px;
+            }
+
+            .impact-number {
+                font-size: 2.5rem;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                color: var(--green-mid);
+                margin-bottom: 0.5rem;
+            }
+
+            .impact-desc {
+                font-size: 0.9rem;
+                color: var(--gray-mid);
+                line-height: 1.5;
+            }
+
+            /* ── FOOTER ── */
+            footer {
+                padding: 3rem 2rem;
+                border-top: 1px solid var(--gray-light);
             }
 
             .footer-inner {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* ── SUBTLE ANIMATIONS ── */
-        @media (prefers-reduced-motion: no-preference) {
-            .fade-in {
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
+                max-width: 1100px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
 
-            .fade-in.visible {
-                opacity: 1;
-                transform: translateY(0);
+            .footer-left p {
+                font-size: 0.85rem;
+                color: var(--gray-mid);
+                line-height: 1.6;
             }
-        }
-    </style>
-</head>
-<body>
 
-    <!-- NAV -->
-    <nav id="navbar">
-        <div class="nav-inner">
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#impact">Impact</a></li>
-            </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+            .footer-logo {
+                height: 28px;
+                opacity: 0.4;
+                transition: opacity 0.2s ease;
+            }
 
-    <!-- HERO -->
-    <section class="hero" id="hero">
-        <div class="hero-content fade-in">
-            <img src="wflogo_main.svg" alt="The Wilding Foundation" class="hero-logo" />
-        </div>
-    </section>
+            .footer-logo:hover {
+                opacity: 0.7;
+            }
 
-    <!-- ABOUT -->
-    <section class="about" id="about">
-        <div class="section-inner">
-            <div class="about-grid">
-                <div class="about-text fade-in">
-                    <p class="section-label">About</p>
-                    <h2 class="section-heading">Where technology meets creativity</h2>
-                    <p>The Wilding Foundation is a federally registered charity based on Salt Spring Island, BC. We believe that the intersection of technology and art creates powerful opportunities for learning and growth.</p>
-                    <p>Through grants, programs, and community partnerships, we invest in people and projects that make creative technology accessible to everyone&mdash;especially youth.</p>
-                </div>
-                <div class="about-visual fade-in">
-                    <img src="img/icon_colour.svg" alt="Wilding Foundation icon" style="width: 100%; max-width: 320px; height: auto;" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section-inner">
-            <p class="section-label fade-in">Projects</p>
-            <h2 class="section-heading fade-in">What we support</h2>
-            <p class="section-desc fade-in">We partner with local organizations to bring technology, art, and education together on Salt Spring Island and beyond.</p>
-
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-
-                    <h3><a href="https://saltspring.bc.libraries.coop/programs/fablab/">Fab Lab</a></h3>
-                    <p>A community space for learning and creating with digital fabrication tools like 3D printers and laser cutters. We also make robotics and STEAM courses free for all kids ages 6 to 18 through our <a href="https://saltspring.bc.libraries.coop/programs/fablab-programming/" style="color: var(--green-mid);">Child &amp; Youth STEAM programs</a>.</p>
-                    <span class="project-tag">$200k annually</span>
-                </div>
-
-                <div class="project-card fade-in">
-
-                    <h3><a href="https://saltspringartprize.ca/grants/catalyst-grants/">Catalyst Grants</a></h3>
-                    <p>Providing $3k&ndash;$6k grants to artists who need help finishing their visual art. Too often a project remains incomplete because the artist lacks the resources to see it through.</p>
-                    <span class="project-tag">$100k annually</span>
-                </div>
-
-                <div class="project-card fade-in">
-
-                    <h3>Salt Spring Arts Council</h3>
-                    <p>Promoting arts and culture on Salt Spring Island, supporting local artists and cultural programming.</p>
-                </div>
-
-                <div class="project-card fade-in">
-
-                    <h3>GISS Robotics Club</h3>
-                    <p>Encouraging youth to engage in robotics and technology through hands-on learning and competition.</p>
-                </div>
-
-                <div class="project-card fade-in">
-
-                    <h3>Graffiti Theatre</h3>
-                    <p>Supporting local theatre and performing arts, bringing creative expression to the community.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- IMPACT -->
-    <section class="impact" id="impact">
-        <div class="section-inner">
-            <p class="section-label fade-in">Impact</p>
-            <h2 class="section-heading fade-in">By the numbers</h2>
-            <p class="section-desc fade-in">Our commitment to the community, year after year.</p>
-
-            <div class="impact-grid">
-                <div class="impact-item fade-in">
-                    <div class="impact-number">$300k+</div>
-                    <div class="impact-desc">Annual funding for community programs</div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="impact-number">6–18</div>
-                    <div class="impact-desc">Age range for free youth STEAM programs</div>
-                </div>
-                <div class="impact-item fade-in">
-                    <div class="impact-number">5+</div>
-                    <div class="impact-desc">Active community partnerships</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-left">
-                <p>&copy; 2026 The Wilding Foundation</p>
-                <p>Salt Spring Island, BC &middot; Charity # 794054205 RR 0001</p>
-            </div>
-            <img src="wflogo_main.svg" alt="Wilding Foundation" class="footer-logo" />
-        </div>
-    </footer>
-
-    <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
-        });
-
-        // Mobile menu toggle
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-        });
-
-        // Close mobile menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('open'));
-        });
-
-        // Scroll-triggered fade-in
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+            /* ── RESPONSIVE ── */
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                    position: absolute;
+                    top: 64px;
+                    left: 0;
+                    right: 0;
+                    background: var(--white);
+                    flex-direction: column;
+                    padding: 1.5rem 2rem;
+                    gap: 1.25rem;
+                    border-bottom: 1px solid var(--gray-light);
                 }
+
+                .nav-links.open {
+                    display: flex;
+                }
+
+                .nav-toggle {
+                    display: block;
+                }
+
+                .hero-logo {
+                    max-width: 345px;
+                }
+
+                .impact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+
+                .news-item {
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+
+                .news-date {
+                    min-width: unset;
+                }
+
+                .footer-inner {
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+
+            /* ── SUBTLE ANIMATIONS ── */
+            @media (prefers-reduced-motion: no-preference) {
+                .fade-in {
+                    opacity: 0;
+                    transform: translateY(16px);
+                    transition:
+                        opacity 0.6s ease,
+                        transform 0.6s ease;
+                }
+
+                .fade-in.visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav id="navbar">
+            <div class="nav-inner">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="#fablab">FabLab</a></li>
+                    <li><a href="#robotics">Robotics</a></li>
+                    <li><a href="#catalyst">Catalyst Grants</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-content fade-in">
+                <img
+                    src="wflogo_main.svg"
+                    alt="The Wilding Foundation"
+                    class="hero-logo"
+                />
+            </div>
+        </section>
+
+        <!-- NEWS & UPDATES -->
+        <section class="news" id="news">
+            <div class="section-inner">
+                <p class="section-label fade-in">News &amp; Media</p>
+                <h2 class="section-heading fade-in">Recent coverage</h2>
+                <p class="section-desc fade-in">
+                    Stories about the Foundation and the programs we support.
+                </p>
+
+                <div class="news-list">
+                    <div class="news-item fade-in">
+                        <span class="news-date">2025</span>
+                        <div class="news-content">
+                            <a
+                                href="https://gulfislandsdriftwood.com/salt-springs-gustafson-wins-top-ssnap-prize/"
+                                >Salt Spring&rsquo;s Gustafson wins top SSNAP
+                                prize</a
+                            >
+                            <p>
+                                Anna Gustafson takes the top award at the sixth
+                                biennial Salt Spring National Art Prize, a
+                                program closely tied to the Wilding
+                                Foundation&rsquo;s Catalyst Grants.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="news-item fade-in">
+                        <span class="news-date">2025</span>
+                        <div class="news-content">
+                            <a
+                                href="https://gulfislandsdriftwood.com/librarys-fablab-delivers-3d-printed-accessibility/"
+                                >Library&rsquo;s FabLab delivers 3D-printed
+                                accessibility</a
+                            >
+                            <p>
+                                The FabLab expands into fabricating assistive
+                                devices, from playing card holders to
+                                3D-printed prosthetics, delivered free of
+                                charge.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="news-item fade-in">
+                        <span class="news-date">Feb 2025</span>
+                        <div class="news-content">
+                            <a
+                                href="https://gulfislandsdriftwood.com/fablab-offers-creative-haven-for-local-residents/"
+                                >FabLab offers creative haven for local
+                                residents</a
+                            >
+                            <p>
+                                The Driftwood profiles the FabLab as a beacon of
+                                innovation, highlighting the Wilding
+                                Foundation&rsquo;s role in keeping it accessible
+                                and free.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="news-item fade-in">
+                        <span class="news-date">Nov 2024</span>
+                        <div class="news-content">
+                            <a
+                                href="https://gulfislandsdriftwood.com/catalyst-grant-artists-announced/"
+                                >Catalyst Grant artists announced</a
+                            >
+                            <p>
+                                The first 16 recipients of the Catalyst Grants
+                                are named, sharing $100,000 in arts funding from
+                                the Wilding Foundation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="news.html" class="btn-see-more"
+                    >See all coverage &rarr;</a
+                >
+            </div>
+        </section>
+
+        <!-- FABLAB -->
+        <section class="program-section alt-bg" id="fablab">
+            <div class="section-inner">
+                <div class="program-text fade-in">
+                    <p class="section-label">FabLab</p>
+                    <h2 class="section-heading">
+                        A creative haven at the heart of the community
+                    </h2>
+                    <p>
+                        The
+                        <a
+                            href="https://saltspring.bc.libraries.coop/programs/fablab/"
+                            >FabLab</a
+                        >
+                        at the Salt Spring Public Library is a community
+                        makerspace equipped with 3D printers, laser cutters,
+                        design software, and more. It offers islanders of all
+                        ages and backgrounds a place to learn, experiment, and
+                        create, all free of charge.
+                    </p>
+                    <p>
+                        What began as a small, glass-walled room with unfamiliar
+                        equipment has grown into a thriving hub running six days
+                        a week at near-full capacity. In 2025, the FabLab logged
+                        over 1,100 appointments (up 24%) and 3,600 drop-in
+                        visits (up 79%), with STEAM program attendance reaching
+                        over 1,000 participants, a 71% increase year over
+                        year.
+                    </p>
+                    <p>
+                        Through the FabLab, the Wilding Foundation also funds
+                        free
+                        <a
+                            href="https://saltspring.bc.libraries.coop/programs/fablab-programming/"
+                            >Child &amp; Youth STEAM programs</a
+                        >, covering robotics, coding, 3D printing, drone
+                        piloting, and more. These programs are free for every
+                        child on Salt Spring Island
+                        ages 6 to 18, regardless of background or experience.
+                        Registrations are regularly waitlisted.
+                    </p>
+                    <p>
+                        The FabLab has even expanded into fabricating assistive
+                        devices, including playing card holders, writing
+                        supports, pill pack openers, and 3D-printed
+                        prosthetics. These are delivered free of charge to
+                        those who
+                        need them.
+                    </p>
+                    <div class="quote">
+                        "The Fab Lab is a very special place for my
+                        neurodivergent child and for our community in general.
+                        It&rsquo;s not lost on me how lucky we are to have this
+                        amazing resource."
+                    </div>
+                    <div class="stat-row">
+                        <span class="program-stat"
+                            >$700k+ invested over 5 years</span
+                        >
+                        <span class="program-stat">97% booking rate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GISS ROBOTICS -->
+        <section class="program-section" id="robotics">
+            <div class="section-inner">
+                <div class="program-text fade-in">
+                    <p class="section-label">GISS Robotics</p>
+                    <h2 class="section-heading">
+                        Building robots, building futures
+                    </h2>
+                    <p>
+                        The Cyber/Scorpions robotics team at Gulf Islands
+                        Secondary School brings together students from grades 8
+                        to 12 who design, build, and compete with robots through
+                        the annual VEX Robotics Competition.
+                    </p>
+                    <p>
+                        Meeting weekly since September each year, the team has
+                        grown steadily, fielding up to 30 students and
+                        seven independently designed robots in a single season.
+                        In February 2023, the Cyber/Scorpions hosted their first
+                        regional competition, welcoming 34 teams from across
+                        Vancouver Island to Salt Spring.
+                    </p>
+                    <p>
+                        The Wilding Foundation is a key financial supporter of
+                        the program, helping ensure that students on Salt Spring
+                        have access to hands-on engineering, problem-solving,
+                        and teamwork experiences that would otherwise be out of
+                        reach for a small island school.
+                    </p>
+                    <div class="stat-row">
+                        <span class="program-stat"
+                            >30 students participating</span
+                        >
+                        <span class="program-stat">34 teams hosted</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATALYST GRANTS -->
+        <section class="program-section alt-bg" id="catalyst">
+            <div class="section-inner">
+                <div class="program-text fade-in">
+                    <p class="section-label">Catalyst Grants</p>
+                    <h2 class="section-heading">
+                        Helping artists finish what they started
+                    </h2>
+                    <p>
+                        Too often, promising art projects remain unfinished
+                        because the artist lacks the funds and resources to
+                        complete them. The Wilding Foundation created the
+                        <a
+                            href="https://saltspringartprize.ca/grants/catalyst-grants/"
+                            >Catalyst Grants</a
+                        >
+                        program to address exactly this problem.
+                    </p>
+                    <p>
+                        Administered in partnership with the Salt Spring
+                        National Art Prize (SSNAP), the program provided grants
+                        of $3,000 to $10,000 to visual artists across the
+                        Southern Gulf Islands and area First Nations. Over two
+                        years, the Foundation committed $100,000 annually to the
+                        program, empowering artists to pursue their creative
+                        visions without the financial constraints that so often
+                        stand in the way.
+                    </p>
+                    <p>
+                        In its inaugural round, 16 artists were selected from
+                        approximately 45 applications, receiving funding to
+                        complete ongoing projects and explore new creative
+                        directions. The grants also served as a stepping stone
+                        for artists aspiring to participate in future SSNAP
+                        exhibitions.
+                    </p>
+                    <p>
+                        As the Gulf Islands Driftwood editorial board noted, the
+                        program represented &ldquo;smart arts
+                        funding&rdquo;, a model that directly supports the
+                        working artist at the moment of greatest need.
+                    </p>
+                    <div class="stat-row">
+                        <span class="program-stat">$100k/year for 2 years</span>
+                        <span class="program-stat"
+                            >~20 artists funded each year</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPACT -->
+        <section class="impact" id="impact">
+            <div class="section-inner">
+                <p class="section-label fade-in">Impact</p>
+                <h2 class="section-heading fade-in">By the numbers</h2>
+                <p class="section-desc fade-in">
+                    Our commitment to Salt Spring Island, year after year.
+                </p>
+
+                <div class="impact-grid">
+                    <div class="impact-item fade-in">
+                        <div class="impact-number">$700k+</div>
+                        <div class="impact-desc">
+                            Invested in the FabLab over five years
+                        </div>
+                    </div>
+                    <div class="impact-item fade-in">
+                        <div class="impact-number">$200k</div>
+                        <div class="impact-desc">
+                            Committed to Catalyst Grants for the arts
+                        </div>
+                    </div>
+                    <div class="impact-item fade-in">
+                        <div class="impact-number">1,000+</div>
+                        <div class="impact-desc">
+                            Youth STEAM program participants in 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <p>&copy; 2026 The Wilding Foundation</p>
+                    <p>
+                        Salt Spring Island, BC &middot; Charity # 794054205 RR
+                        0001
+                    </p>
+                </div>
+                <img
+                    src="wflogo_main.svg"
+                    alt="Wilding Foundation"
+                    class="footer-logo"
+                />
+            </div>
+        </footer>
+
+        <script>
+            // Navbar scroll effect
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 10);
             });
-        }, { threshold: 0.15 });
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+            // Mobile menu toggle
+            const navToggle = document.getElementById("navToggle");
+            const navLinks = document.getElementById("navLinks");
+            navToggle.addEventListener("click", () => {
+                navLinks.classList.toggle("open");
+            });
 
-</body>
+            // Close mobile menu on link click
+            navLinks.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () =>
+                    navLinks.classList.remove("open"),
+                );
+            });
+
+            // Scroll-triggered fade-in
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                        }
+                    });
+                },
+                { threshold: 0.15 },
+            );
+
+            document
+                .querySelectorAll(".fade-in")
+                .forEach((el) => observer.observe(el));
+        </script>
+    </body>
 </html>

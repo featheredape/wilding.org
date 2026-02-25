@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Ethan Wilding" />
+        <meta
+            name="keywords"
+            content="Ethan Wilding, Salt Spring Island, Wilding Foundation, charity, philanthropy, Ethereum, blockchain"
+        />
+        <meta
+            name="description"
+            content="About the Wilding Foundation and its founder Ethan Wilding. A federally registered charity based on Salt Spring Island, BC, supporting the creative interplay of technology and art."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About - The Wilding Foundation</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --green-light: #8db860;
+                --green-mid: #5a8a3c;
+                --green-dark: #3a6b2a;
+                --green-darkest: #2c4a25;
+                --black: #1a1a1a;
+                --gray-dark: #3a3a3a;
+                --gray-mid: #6b6b6b;
+                --gray-light: #e8e8e8;
+                --gray-lighter: #f5f5f4;
+                --white: #ffffff;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family:
+                    "Inter",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    sans-serif;
+                color: var(--black);
+                background: var(--white);
+                line-height: 1.7;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            /* ── NAV ── */
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                background: rgba(255, 255, 255, 0.92);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                transition: box-shadow 0.3s ease;
+            }
+            nav.scrolled {
+                box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+            }
+
+            .nav-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                height: 64px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: var(--gray-mid);
+                font-size: 0.875rem;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                transition: color 0.2s ease;
+            }
+            .nav-links a:hover {
+                color: var(--green-mid);
+            }
+            .nav-links a.active {
+                color: var(--green-mid);
+            }
+
+            .nav-toggle {
+                display: none;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+            }
+            .nav-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: var(--black);
+                margin: 4px 0;
+                transition: all 0.3s ease;
+            }
+
+            /* ── PAGE HEADER ── */
+            .page-header {
+                padding: 8rem 2rem 4rem;
+                text-align: center;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                letter-spacing: -0.03em;
+                margin-bottom: 1rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+                color: var(--gray-mid);
+                max-width: 560px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
+
+            .header-line {
+                width: 48px;
+                height: 2px;
+                background: linear-gradient(
+                    90deg,
+                    var(--green-dark),
+                    var(--green-light)
+                );
+                margin: 2rem auto 0;
+                border-radius: 1px;
+            }
+
+            /* ── CONTENT SECTIONS ── */
+            .content-section {
+                padding: 4rem 2rem;
+            }
+
+            .content-section.alt-bg {
+                background: var(--gray-lighter);
+            }
+
+            .content-inner {
+                max-width: 760px;
+                margin: 0 auto;
+            }
+
+            .section-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--green-mid);
+                margin-bottom: 1rem;
+            }
+
+            .section-heading {
+                font-size: 1.75rem;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+                color: var(--black);
+            }
+
+            .content-inner p {
+                font-size: 1.05rem;
+                color: var(--gray-dark);
+                line-height: 1.85;
+                margin-bottom: 1.25rem;
+            }
+
+            .content-inner a {
+                color: var(--green-mid);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s ease;
+            }
+            .content-inner a:hover {
+                color: var(--green-dark);
+            }
+
+            .programs-list {
+                margin: 1.5rem 0;
+                padding-left: 0;
+                list-style: none;
+            }
+
+            .programs-list li {
+                position: relative;
+                padding-left: 1.25rem;
+                margin-bottom: 0.75rem;
+                font-size: 1.05rem;
+                color: var(--gray-dark);
+                line-height: 1.7;
+            }
+
+            .programs-list li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0.65em;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                border: 1.5px solid var(--green-mid);
+            }
+
+            /* ── FOUNDER SECTION ── */
+            .founder-grid {
+                max-width: 900px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .founder-text p {
+                font-size: 1.05rem;
+                color: var(--gray-dark);
+                line-height: 1.85;
+                margin-bottom: 1.25rem;
+            }
+
+            .founder-text a {
+                color: var(--green-mid);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.2s ease;
+            }
+            .founder-text a:hover {
+                color: var(--green-dark);
+            }
+
+            /* ── FOOTER ── */
+            footer {
+                padding: 3rem 2rem;
+                border-top: 1px solid var(--gray-light);
+            }
+
+            .footer-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .footer-left p {
+                font-size: 0.85rem;
+                color: var(--gray-mid);
+                line-height: 1.6;
+            }
+
+            .footer-logo {
+                height: 28px;
+                opacity: 0.4;
+                transition: opacity 0.2s ease;
+            }
+            .footer-logo:hover {
+                opacity: 0.7;
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                    position: absolute;
+                    top: 64px;
+                    left: 0;
+                    right: 0;
+                    background: var(--white);
+                    flex-direction: column;
+                    padding: 1.5rem 2rem;
+                    gap: 1.25rem;
+                    border-bottom: 1px solid var(--gray-light);
+                }
+                .nav-links.open {
+                    display: flex;
+                }
+                .nav-toggle {
+                    display: block;
+                }
+                .page-header h1 {
+                    font-size: 2rem;
+                }
+                .footer-inner {
+                    flex-direction: column;
+                    text-align: center;
+                }
+            }
+
+            /* ── ANIMATIONS ── */
+            @media (prefers-reduced-motion: no-preference) {
+                .fade-in {
+                    opacity: 0;
+                    transform: translateY(16px);
+                    transition:
+                        opacity 0.6s ease,
+                        transform 0.6s ease;
+                }
+                .fade-in.visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- NAV -->
+        <nav id="navbar">
+            <div class="nav-inner">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#fablab">FabLab</a></li>
+                    <li><a href="index.html#catalyst">Catalyst Grants</a></li>
+                    <li><a href="index.html#robotics">Robotics</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- PAGE HEADER -->
+        <div class="page-header fade-in">
+            <h1>About the Foundation</h1>
+            <p>Where technology meets art, and community comes first.</p>
+            <div class="header-line"></div>
+        </div>
+
+        <!-- THE FOUNDATION -->
+        <section class="content-section fade-in">
+            <div class="content-inner">
+                <p class="section-label">Our Mission</p>
+
+                <p>
+                    We believe that when people have access to the right tools
+                    and resources, remarkable things happen. A teenager builds
+                    her first robot. An artist finishes a piece that&rsquo;s
+                    been waiting years for completion. A child with limited
+                    mobility receives a custom 3D-printed assistive device,
+                    delivered to their door for free.
+                </p>
+                <p>
+                    Our work on Salt Spring Island spans several programs and
+                    partnerships:
+                </p>
+                <ul class="programs-list">
+                    <li>
+                        The <strong>FabLab</strong> at the Salt Spring Public
+                        Library, a community makerspace offering free access to
+                        3D printers, laser cutters, and design tools, with over
+                        $700,000 invested over five years
+                    </li>
+                    <li>
+                        Free
+                        <strong>Child &amp; Youth STEAM programs</strong> for
+                        every island child ages 6&ndash;18, covering robotics,
+                        coding, 3D printing, and more
+                    </li>
+                    <li>
+                        Support for the
+                        <strong>GISS Robotics Club</strong> (Cyber/Scorpions),
+                        enabling students to design, build, and compete in VEX
+                        Robotics competitions
+                    </li>
+                    <li>
+                        The <strong>Catalyst Grants</strong>, created in
+                        partnership with SSNAP to provide $3,000&ndash;$10,000
+                        grants to visual artists across the Southern Gulf
+                        Islands, with $100,000 committed annually over two years
+                    </li>
+
+                    <li>
+                        Contributions to the
+                        <strong>Salt Spring Arts Council</strong> and
+                        <strong>Graffiti Theatre</strong>, supporting arts and
+                        culture across the island
+                    </li>
+                </ul>
+                <p>
+                    Every program we fund shares a common thread: making
+                    creative technology and artistic opportunity accessible to
+                    everyone, regardless of age, background, or financial means.
+                </p>
+                <p>
+                    The Wilding Foundation is a federally registered Canadian
+                    charity based on Salt Spring Island, British Columbia.
+                    Founded in 2021 and fully funded by the philanthropic
+                    efforts of Ethan Wilding.
+                </p>
+            </div>
+        </section>
+
+        <!-- THE FOUNDER -->
+        <section class="content-section alt-bg fade-in">
+            <div class="content-inner">
+                <p class="section-label">The Founder</p>
+                <h2 class="section-heading">Ethan Wilding</h2>
+                <div class="founder-text">
+                    <p>
+                        Ethan holds a doctorate in Philosophy from the
+                        University of Waterloo and has spent his career at the
+                        intersection of technology, governance, and community
+                        building.
+                    </p>
+                    <p>
+                        In his professional life, he is a founding team member
+                        of
+                        <a href="https://ethereum.org">Ethereum</a>, where he
+                        served as Resident Philosopher, and co-founder of
+                        <a href="https://ledgerlabs.io">Ledger Labs</a>, one of
+                        Canada&rsquo;s earliest blockchain consulting firms. He
+                        has also served as Chair of the Certified Bitcoin
+                        Professional exam, one of the first not-for-profit
+                        programs to establish a standard body of knowledge in
+                        the field.
+                    </p>
+                    <p>
+                        After buying property on Salt Spring Island just before
+                        the pandemic, Ethan became deeply invested in the
+                        community. When he visited the Salt Spring Library and
+                        discovered a fledgling makerspace that was at risk of
+                        closing due to lack of funding, he saw an opportunity to
+                        put his resources to work in a tangible, lasting way.
+                        That initial conversation over cookies at a library
+                        launch event became the seed that grew the FabLab into
+                        the signifiant community resource that it is today.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <p>&copy; 2026 The Wilding Foundation</p>
+                    <p>
+                        Salt Spring Island, BC &middot; Charity # 794054205 RR
+                        0001
+                    </p>
+                </div>
+                <img
+                    src="wflogo_main.svg"
+                    alt="Wilding Foundation"
+                    class="footer-logo"
+                />
+            </div>
+        </footer>
+
+        <script>
+            const navbar = document.getElementById("navbar");
+            window.addEventListener("scroll", () => {
+                navbar.classList.toggle("scrolled", window.scrollY > 10);
+            });
+            const navToggle = document.getElementById("navToggle");
+            const navLinks = document.getElementById("navLinks");
+            navToggle.addEventListener("click", () =>
+                navLinks.classList.toggle("open"),
+            );
+            navLinks.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () =>
+                    navLinks.classList.remove("open"),
+                );
+            });
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting)
+                            entry.target.classList.add("visible");
+                    });
+                },
+                { threshold: 0.15 },
+            );
+            document
+                .querySelectorAll(".fade-in")
+                .forEach((el) => observer.observe(el));
+        </script>
+    </body>
+</html>
