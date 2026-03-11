@@ -55,7 +55,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap"
             rel="stylesheet"
         />
         <style>
@@ -68,7 +68,7 @@
                 --gray-dark: #3a3a3a;
                 --gray-mid: #6b6b6b;
                 --gray-light: #e8e8e8;
-                --gray-lighter: #f5f5f4;
+                --gray-lighter: #f7f4ed;
                 --white: #ffffff;
             }
 
@@ -83,7 +83,7 @@
 
             body {
                 font-family:
-                    "Inter",
+                    "DM Sans",
                     -apple-system,
                     BlinkMacSystemFont,
                     "Segoe UI",
@@ -92,6 +92,10 @@
                 background: var(--white);
                 line-height: 1.7;
                 -webkit-font-smoothing: antialiased;
+            }
+
+            h1, h2, .section-heading {
+                font-family: "Fraunces", Georgia, serif;
             }
 
             /* ── NAV ── */
@@ -117,8 +121,21 @@
                 padding: 0 2rem;
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: space-between;
                 height: 64px;
+            }
+
+            .nav-home {
+                text-decoration: none;
+                color: var(--gray-mid);
+                font-size: 0.875rem;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                transition: color 0.2s ease;
+            }
+
+            .nav-home:hover {
+                color: var(--green-mid);
             }
 
             .nav-links {
@@ -372,6 +389,7 @@
         <!-- NAV -->
         <nav id="navbar">
             <div class="nav-inner">
+                <a href="index.html" class="nav-home">Home</a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="news.html">News</a></li>
                     <li><a href="index.html#fablab">FabLab</a></li>

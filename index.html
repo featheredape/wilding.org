@@ -62,7 +62,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap"
             rel="stylesheet"
         />
         <style>
@@ -75,7 +75,7 @@
                 --gray-dark: #3a3a3a;
                 --gray-mid: #6b6b6b;
                 --gray-light: #e8e8e8;
-                --gray-lighter: #f5f5f4;
+                --gray-lighter: #f7f4ed;
                 --white: #ffffff;
             }
 
@@ -91,7 +91,7 @@
 
             body {
                 font-family:
-                    "Inter",
+                    "DM Sans",
                     -apple-system,
                     BlinkMacSystemFont,
                     "Segoe UI",
@@ -100,6 +100,10 @@
                 background: var(--white);
                 line-height: 1.7;
                 -webkit-font-smoothing: antialiased;
+            }
+
+            h1, h2, .section-heading, .impact-number {
+                font-family: "Fraunces", Georgia, serif;
             }
 
             /* ── NAV ── */
@@ -126,8 +130,26 @@
                 padding: 0 2rem;
                 display: flex;
                 align-items: center;
-                justify-content: flex-end;
+                justify-content: space-between;
                 height: 64px;
+            }
+
+            .nav-home {
+                text-decoration: none;
+                color: var(--gray-mid);
+                font-size: 0.875rem;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+                transition: color 0.2s ease, opacity 0.3s ease;
+            }
+
+            .nav-home:hover {
+                color: var(--green-mid);
+            }
+
+            .nav-home.hidden {
+                opacity: 0;
+                pointer-events: none;
             }
 
             .nav-links {
@@ -205,6 +227,16 @@
                 max-width: 503px;
                 width: 100%;
                 height: auto;
+                margin-bottom: 2rem;
+            }
+
+            .hero-tagline {
+                font-family: "DM Sans", sans-serif;
+                font-size: 1.15rem;
+                color: var(--gray-mid);
+                line-height: 1.8;
+                max-width: 480px;
+                margin: 0 auto;
             }
 
             /* ── SECTION SHARED ── */
@@ -303,6 +335,67 @@
                 margin-top: 1rem;
             }
 
+            /* ── SECTION ACCENTS ── */
+            .program-section .section-divider {
+                width: 48px;
+                height: 2px;
+                background: linear-gradient(90deg, var(--green-dark), var(--green-light));
+                border-radius: 1px;
+                margin-bottom: 1.5rem;
+            }
+
+            .stat-cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .stat-card {
+                padding: 1.25rem 1.5rem;
+                border: 1px solid var(--gray-light);
+                border-radius: 10px;
+                text-align: center;
+                background: var(--white);
+            }
+
+            .stat-card .stat-value {
+                font-family: "Fraunces", Georgia, serif;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--green-mid);
+                margin-bottom: 0.25rem;
+            }
+
+            .stat-card .stat-label {
+                font-size: 0.8rem;
+                color: var(--gray-mid);
+            }
+
+            .editorial-quote {
+                margin: 1.5rem 0;
+                padding: 1.5rem 2rem;
+                background: var(--white);
+                border-radius: 10px;
+                border: 1px solid var(--gray-light);
+                position: relative;
+            }
+
+            .editorial-quote p {
+                font-style: italic;
+                color: var(--gray-dark);
+                font-size: 1rem;
+                margin-bottom: 0 !important;
+            }
+
+            .editorial-quote .quote-source {
+                font-style: normal;
+                font-size: 0.8rem;
+                color: var(--gray-mid);
+                margin-top: 0.5rem;
+                font-weight: 500;
+            }
+
             /* ── QUOTE ── */
             .quote {
                 margin: 1.5rem 0;
@@ -316,7 +409,7 @@
 
             /* ── NEWS & UPDATES ── */
             .news {
-                background: #f4f7f1;
+                background: #f4f2ea;
             }
 
             .news-list {
@@ -495,6 +588,10 @@
                     gap: 1rem;
                 }
 
+                .stat-cards {
+                    grid-template-columns: 1fr;
+                }
+
                 .news-item {
                     flex-direction: column;
                     gap: 0.25rem;
@@ -531,6 +628,7 @@
         <!-- NAV -->
         <nav id="navbar">
             <div class="nav-inner">
+                <a href="index.html" class="nav-home hidden" id="navHome">Home</a>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="news.html">News</a></li>
                     <li><a href="#fablab">FabLab</a></li>
@@ -567,6 +665,22 @@
                 </p>
 
                 <div class="news-list">
+                    <div class="news-item fade-in">
+                        <span class="news-date">Mar 2026</span>
+                        <div class="news-content">
+                            <a
+                                href="https://gulfislandsdriftwood.com/cyber-scorpions-team-thrives-with-community-support/"
+                                >Cyber/Scorpions team thrives with community support</a
+                            >
+                            <p>
+                                The GISS robotics team credits Wilding Foundation
+                                sponsorship for a standout season, with top-10
+                                finishes at six Vancouver Island tournaments, a
+                                regional event hosted at GISS, and new
+                                investments in team equipment and identity.
+                            </p>
+                        </div>
+                    </div>
                     <div class="news-item fade-in">
                         <span class="news-date">Feb 2026</span>
                         <div class="news-content">
@@ -612,22 +726,6 @@
                                 devices, from playing card holders to
                                 3D-printed prosthetics, delivered free of
                                 charge.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="news-item fade-in">
-                        <span class="news-date">Feb 2025</span>
-                        <div class="news-content">
-                            <a
-                                href="https://gulfislandsdriftwood.com/fablab-offers-creative-haven-for-local-residents/"
-                                >FabLab offers creative haven for local
-                                residents</a
-                            >
-                            <p>
-                                The Driftwood profiles the FabLab as a beacon of
-                                innovation, highlighting the Wilding
-                                Foundation&rsquo;s role in keeping it accessible
-                                and free.
                             </p>
                         </div>
                     </div>
@@ -717,6 +815,12 @@
                     <h2 class="section-heading">
                         Building robots, building futures
                     </h2>
+                    <div class="section-divider"></div>
+                    <img
+                        src="img/giss-robotics-2026.png"
+                        alt="The GISS Cyber/Scorpions robotics team with sponsor Ethan Wilding at the competition field"
+                        class="program-image"
+                    />
                     <p>
                         The Cyber/Scorpions robotics team at Gulf Islands
                         Secondary School brings together students from grades 8
@@ -738,12 +842,6 @@
                         and teamwork experiences that would otherwise be out of
                         reach for a small island school.
                     </p>
-                    <div class="stat-row">
-                        <span class="program-stat"
-                            >30 students participating</span
-                        >
-                        <span class="program-stat">34 teams hosted</span>
-                    </div>
                 </div>
             </div>
         </section>
@@ -784,17 +882,9 @@
                         for artists aspiring to participate in future SSNAP
                         exhibitions.
                     </p>
-                    <p>
-                        As the Gulf Islands Driftwood editorial board noted, the
-                        program represented &ldquo;smart arts
-                        funding&rdquo;, a model that directly supports the
-                        working artist at the moment of greatest need.
-                    </p>
-                    <div class="stat-row">
-                        <span class="program-stat">$100k/year for 2 years</span>
-                        <span class="program-stat"
-                            >~20 artists funded each year</span
-                        >
+                    <div class="editorial-quote">
+                        <p>&ldquo;Smart arts funding&rdquo; &mdash; a model that directly supports the working artist at the moment of greatest need.</p>
+                        <div class="quote-source">Gulf Islands Driftwood editorial</div>
                     </div>
                 </div>
             </div>
@@ -851,10 +941,16 @@
         </footer>
 
         <script>
-            // Navbar scroll effect
+            // Navbar scroll effect + Home link reveal
             const navbar = document.getElementById("navbar");
+            const navHome = document.getElementById("navHome");
+            const heroSection = document.getElementById("hero");
             window.addEventListener("scroll", () => {
                 navbar.classList.toggle("scrolled", window.scrollY > 10);
+                if (navHome && heroSection) {
+                    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                    navHome.classList.toggle("hidden", window.scrollY < heroBottom - 100);
+                }
             });
 
             // Mobile menu toggle

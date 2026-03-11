@@ -48,7 +48,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --green-light: #8DB860;
@@ -59,7 +59,7 @@
             --gray-dark: #3a3a3a;
             --gray-mid: #6b6b6b;
             --gray-light: #e8e8e8;
-            --gray-lighter: #f5f5f4;
+            --gray-lighter: #f7f4ed;
             --white: #ffffff;
         }
 
@@ -67,11 +67,15 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: var(--black);
             background: var(--white);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, .section-heading {
+            font-family: "Fraunces", Georgia, serif;
         }
 
         /* ── NAV ── */
@@ -93,8 +97,21 @@
             padding: 0 2rem;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
             height: 64px;
+        }
+
+        .nav-home {
+            text-decoration: none;
+            color: var(--gray-mid);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .nav-home:hover {
+            color: var(--green-mid);
         }
 
         .nav-links {
@@ -308,6 +325,7 @@
     <!-- NAV -->
     <nav id="navbar">
         <div class="nav-inner">
+            <a href="index.html" class="nav-home">Home</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="news.html" class="active">News</a></li>
                 <li><a href="index.html#fablab">FabLab</a></li>
@@ -335,7 +353,16 @@
             <h2 class="news-year fade-in">2026</h2>
 
             <div class="news-item fade-in">
-                <span class="news-date">Feb 2026</span>
+                <span class="news-date">Mar</span>
+                <div class="news-content">
+                    <a href="https://gulfislandsdriftwood.com/cyber-scorpions-team-thrives-with-community-support/">Cyber/Scorpions team thrives with community support</a>
+                    <p>The GISS Cyber/Scorpions robotics team credits $10,000 in Wilding Foundation sponsorship for a standout season, with top-10 finishes at six Vancouver Island tournaments, a regional event hosted at GISS in December, and new investments in team equipment and identity.</p>
+                    <span class="news-tag">GISS Robotics</span>
+                </div>
+            </div>
+
+            <div class="news-item fade-in">
+                <span class="news-date">Feb</span>
                 <div class="news-content">
                     <a href="https://saltspringexchange.com/2026/02/04/learning-about-our-fabulous-fablab/">Learning about our fabulous FabLab</a>
                     <p>ASK Salt Spring welcomes FabLab administrator Ryan Shepard, who shares how the fully Wilding Foundation-funded makerspace has grown from 30&ndash;40% capacity to nearly 100%, with free 3D printing, adaptive devices, and youth STEAM programs serving the community six days a week.</p>
@@ -346,7 +373,7 @@
             <h2 class="news-year fade-in">2025</h2>
 
             <div class="news-item fade-in">
-                <span class="news-date">2025</span>
+                <span class="news-date"></span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/salt-springs-gustafson-wins-top-ssnap-prize/">Salt Spring&rsquo;s Gustafson wins top SSNAP prize</a>
                     <p>Anna Gustafson takes the top award at the sixth biennial Salt Spring National Art Prize, a program closely connected to the Wilding Foundation&rsquo;s Catalyst Grants.</p>
@@ -355,7 +382,7 @@
             </div>
 
             <div class="news-item fade-in">
-                <span class="news-date">2025</span>
+                <span class="news-date"></span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/librarys-fablab-delivers-3d-printed-accessibility/">Library&rsquo;s FabLab delivers 3D-printed accessibility</a>
                     <p>The FabLab expands into fabricating assistive devices, including playing card holders, writing supports, pill pack openers, and 3D-printed prosthetics. All are delivered free of charge through the library&rsquo;s Visiting Library Services.</p>
@@ -364,7 +391,7 @@
             </div>
 
             <div class="news-item fade-in">
-                <span class="news-date">Feb 2025</span>
+                <span class="news-date">Feb</span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/fablab-offers-creative-haven-for-local-residents/">FabLab offers creative haven for local residents</a>
                     <p>The Gulf Islands Driftwood profiles the FabLab as a beacon of innovation and creativity, highlighting the Wilding Foundation&rsquo;s funding that keeps the facility accessible and free for all.</p>
@@ -375,7 +402,7 @@
             <h2 class="news-year fade-in">2024</h2>
 
             <div class="news-item fade-in">
-                <span class="news-date">Nov 2024</span>
+                <span class="news-date">Nov</span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/catalyst-grant-artists-announced/">Catalyst Grant artists announced</a>
                     <p>The first 16 recipients of the Catalyst Grants are named, sharing $100,000 in arts funding from the Wilding Foundation, selected from approximately 45 applications across the Southern Gulf Islands.</p>
@@ -384,7 +411,7 @@
             </div>
 
             <div class="news-item fade-in">
-                <span class="news-date">2024</span>
+                <span class="news-date"></span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/editorial-smart-arts-funding/">Editorial: Smart arts funding</a>
                     <p>The Driftwood editorial board highlights the Wilding Foundation and SSNAP&rsquo;s Catalyst Grants as a model for effective, artist-centered arts funding.</p>
@@ -393,7 +420,7 @@
             </div>
 
             <div class="news-item fade-in">
-                <span class="news-date">2024</span>
+                <span class="news-date"></span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/wilding-foundation-and-ssnap-team-up-for-new-grants-program/">Wilding Foundation and SSNAP team up for new grants program</a>
                     <p>The Foundation announces its partnership with the Salt Spring National Art Prize to launch the Catalyst Grants, committing $100,000 per year for two years to support visual artists.</p>
@@ -404,7 +431,7 @@
             <h2 class="news-year fade-in">2023</h2>
 
             <div class="news-item fade-in">
-                <span class="news-date">Feb 2023</span>
+                <span class="news-date">Feb</span>
                 <div class="news-content">
                     <a href="https://gulfislandsdriftwood.com/giss-hosts-vex-robotics-tournament-and-enjoys-broad-community-support-throughout-the-year/">GISS hosts VEX robotics tournament with broad community support</a>
                     <p>The GISS Cyber/Scorpions host their first regional VEX Robotics competition, welcoming 34 teams from Vancouver Island. The Wilding Foundation is recognized as a key financial supporter of the program.</p>

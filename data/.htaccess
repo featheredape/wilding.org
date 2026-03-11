@@ -1,0 +1,2 @@
+# Prevent direct web access to application data
+Deny from all
