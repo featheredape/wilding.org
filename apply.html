@@ -5,11 +5,11 @@
         <meta name="author" content="Ethan Wilding" />
         <meta
             name="keywords"
-            content="Wilding Foundation, shoemaking course, Salt Spring Island, artisan workshop, handmade shoes"
+            content="Wilding Foundation, shoemaking course, Salt Spring Island, artisan workshop, handmade shoes, traditional craft"
         />
         <meta
             name="description"
-            content="Apply for the Wilding Foundation's subsidized shoemaking course on Salt Spring Island. A hands-on workshop for artists and makers."
+            content="Apply for the traditional shoemaking workshop on Salt Spring Island. Five intensive days of hands-on craft training for artists and makers, offered with the Salt Spring Island Public Library."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -17,8 +17,8 @@
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Shoemaking Course Application - The Wilding Foundation" />
-        <meta property="og:description" content="Apply for the Wilding Foundation's subsidized shoemaking course on Salt Spring Island. A hands-on workshop for artists and makers." />
+        <meta property="og:title" content="Learn Traditional Shoemaking - The Wilding Foundation" />
+        <meta property="og:description" content="Apply for the traditional shoemaking workshop on Salt Spring Island. Five intensive days of hands-on craft training for artists and makers, offered with the Salt Spring Island Public Library." />
         <meta property="og:url" content="https://wilding.org/apply.html" />
         <meta property="og:image" content="https://wilding.org/img/og-image.png" />
         <meta property="og:image:width" content="1200" />
@@ -29,12 +29,12 @@
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Shoemaking Course Application - The Wilding Foundation" />
-        <meta name="twitter:description" content="Apply for the Wilding Foundation's subsidized shoemaking course on Salt Spring Island. A hands-on workshop for artists and makers." />
+        <meta name="twitter:title" content="Learn Traditional Shoemaking - The Wilding Foundation" />
+        <meta name="twitter:description" content="Apply for the traditional shoemaking workshop on Salt Spring Island. Five intensive days of hands-on craft training for artists and makers, offered with the Salt Spring Island Public Library." />
         <meta name="twitter:image" content="https://wilding.org/img/og-image.png" />
         <meta name="twitter:image:alt" content="The Wilding Foundation logo" />
 
-        <title>Shoemaking Course - The Wilding Foundation</title>
+        <title>Learn Traditional Shoemaking - The Wilding Foundation</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,424 +42,7 @@
             href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <style>
-            :root {
-                --green-light: #8db860;
-                --green-mid: #5a8a3c;
-                --green-dark: #3a6b2a;
-                --green-darkest: #2c4a25;
-                --black: #1a1a1a;
-                --gray-dark: #3a3a3a;
-                --gray-mid: #6b6b6b;
-                --gray-light: #e8e8e8;
-                --gray-lighter: #f7f4ed;
-                --white: #ffffff;
-            }
-
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            html { scroll-behavior: smooth; }
-
-            body {
-                font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                color: var(--black);
-                background: var(--white);
-                line-height: 1.7;
-                -webkit-font-smoothing: antialiased;
-            }
-
-            h1, h2, .section-heading {
-                font-family: "Fraunces", Georgia, serif;
-            }
-
-            /* ── NAV ── */
-            nav {
-                position: fixed;
-                top: 0; left: 0; right: 0;
-                z-index: 100;
-                background: rgba(255, 255, 255, 0.92);
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
-                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-                transition: box-shadow 0.3s ease;
-            }
-
-            nav.scrolled {
-                box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
-            }
-
-            .nav-inner {
-                max-width: 1100px;
-                margin: 0 auto;
-                padding: 0 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                height: 64px;
-            }
-
-            .nav-home {
-                text-decoration: none;
-                color: var(--gray-mid);
-                font-size: 0.875rem;
-                font-weight: 500;
-                letter-spacing: 0.02em;
-                transition: color 0.2s ease;
-            }
-
-            .nav-home:hover {
-                color: var(--green-mid);
-            }
-
-            .nav-links {
-                display: flex;
-                gap: 2rem;
-                list-style: none;
-            }
-
-            .nav-links a {
-                text-decoration: none;
-                color: var(--gray-mid);
-                font-size: 0.875rem;
-                font-weight: 500;
-                letter-spacing: 0.02em;
-                transition: color 0.2s ease;
-            }
-
-            .nav-links a:hover { color: var(--green-mid); }
-            .nav-links a.active { color: var(--green-mid); }
-
-            .nav-toggle {
-                display: none;
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 0.5rem;
-            }
-
-            .nav-toggle span {
-                display: block;
-                width: 20px;
-                height: 2px;
-                background: var(--black);
-                margin: 4px 0;
-                transition: all 0.3s ease;
-            }
-
-            /* ── PAGE HEADER ── */
-            .page-header {
-                padding: 8rem 2rem 3rem;
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-                font-weight: 700;
-                letter-spacing: -0.02em;
-                line-height: 1.2;
-                margin-bottom: 0.75rem;
-            }
-
-            .page-header > p {
-                font-size: 1.05rem;
-                color: var(--gray-mid);
-                max-width: 640px;
-                line-height: 1.8;
-            }
-
-            .header-line {
-                width: 48px;
-                height: 3px;
-                background: var(--green-light);
-                border-radius: 2px;
-                margin-top: 1.5rem;
-            }
-
-            /* ── COURSE INFO ── */
-            .course-section {
-                padding: 0 2rem 3rem;
-            }
-
-            .course-inner {
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-
-            .course-details {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .course-detail {
-                padding: 1.5rem;
-                border: 1px solid var(--gray-light);
-                border-radius: 10px;
-                text-align: center;
-            }
-
-            .course-detail .label {
-                font-size: 0.75rem;
-                font-weight: 600;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: var(--green-mid);
-                margin-bottom: 0.5rem;
-            }
-
-            .course-detail .value {
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: var(--black);
-            }
-
-            .course-detail .note {
-                font-size: 0.8rem;
-                color: var(--gray-mid);
-                margin-top: 0.25rem;
-            }
-
-            .course-desc {
-                font-size: 1.05rem;
-                color: var(--gray-dark);
-                line-height: 1.8;
-                max-width: 800px;
-                margin-bottom: 1.25rem;
-            }
-
-            .course-note {
-                font-size: 0.95rem;
-                color: var(--gray-mid);
-                line-height: 1.7;
-                padding: 1.25rem;
-                background: var(--gray-lighter);
-                border-radius: 8px;
-                border-left: 3px solid var(--green-light);
-                margin-top: 1.5rem;
-                max-width: 800px;
-            }
-
-            /* ── FORM ── */
-            .form-section {
-                padding: 4rem 2rem;
-                background: var(--gray-lighter);
-            }
-
-            .form-inner {
-                max-width: 680px;
-                margin: 0 auto;
-            }
-
-            .form-section h2 {
-                font-size: 1.75rem;
-                font-weight: 700;
-                letter-spacing: -0.02em;
-                margin-bottom: 0.5rem;
-            }
-
-            .form-section > .form-inner > p {
-                font-size: 0.95rem;
-                color: var(--gray-mid);
-                margin-bottom: 2rem;
-                line-height: 1.7;
-            }
-
-            .form-group {
-                margin-bottom: 1.75rem;
-            }
-
-            .form-group label {
-                display: block;
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--black);
-                margin-bottom: 0.5rem;
-            }
-
-            .form-group label .required {
-                color: var(--green-mid);
-                margin-left: 2px;
-            }
-
-            .form-group .hint {
-                display: block;
-                font-size: 0.8rem;
-                color: var(--gray-mid);
-                margin-bottom: 0.5rem;
-                font-weight: 400;
-            }
-
-            .form-group input[type="text"],
-            .form-group input[type="email"],
-            .form-group textarea {
-                width: 100%;
-                padding: 0.75rem 1rem;
-                font-family: inherit;
-                font-size: 0.95rem;
-                color: var(--black);
-                background: var(--white);
-                border: 1px solid var(--gray-light);
-                border-radius: 8px;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
-                line-height: 1.6;
-            }
-
-            .form-group input:focus,
-            .form-group textarea:focus {
-                outline: none;
-                border-color: var(--green-mid);
-                box-shadow: 0 0 0 3px rgba(141, 184, 96, 0.15);
-            }
-
-            .form-group textarea {
-                min-height: 120px;
-                resize: vertical;
-            }
-
-            .form-group.checkbox-group {
-                display: flex;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-
-            .form-group.checkbox-group input[type="checkbox"] {
-                margin-top: 0.25rem;
-                width: 18px;
-                height: 18px;
-                accent-color: var(--green-mid);
-                flex-shrink: 0;
-            }
-
-            .form-group.checkbox-group label {
-                font-weight: 400;
-                font-size: 0.95rem;
-                color: var(--gray-dark);
-                margin-bottom: 0;
-            }
-
-            .btn-submit {
-                display: inline-block;
-                padding: 0.85rem 2.5rem;
-                background: var(--green-mid);
-                color: var(--white);
-                border: none;
-                border-radius: 8px;
-                font-family: inherit;
-                font-size: 0.95rem;
-                font-weight: 600;
-                cursor: pointer;
-                transition: background 0.2s ease, transform 0.1s ease;
-                margin-top: 0.5rem;
-            }
-
-            .btn-submit:hover {
-                background: var(--green-dark);
-            }
-
-            .btn-submit:active {
-                transform: scale(0.98);
-            }
-
-            .btn-submit:disabled {
-                background: var(--gray-mid);
-                cursor: not-allowed;
-            }
-
-            /* ── SUCCESS / ERROR MESSAGES ── */
-            .form-message {
-                display: none;
-                padding: 1.25rem;
-                border-radius: 8px;
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-top: 1.5rem;
-            }
-
-            .form-message.success {
-                background: rgba(141, 184, 96, 0.12);
-                border: 1px solid var(--green-light);
-                color: var(--green-darkest);
-            }
-
-            .form-message.error {
-                background: rgba(220, 53, 69, 0.08);
-                border: 1px solid rgba(220, 53, 69, 0.3);
-                color: #842029;
-            }
-
-            /* ── FOOTER ── */
-            footer {
-                padding: 3rem 2rem;
-                border-top: 1px solid var(--gray-light);
-            }
-
-            .footer-inner {
-                max-width: 1100px;
-                margin: 0 auto;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .footer-left p {
-                font-size: 0.85rem;
-                color: var(--gray-mid);
-                line-height: 1.6;
-            }
-
-            .footer-logo {
-                height: 28px;
-                opacity: 0.4;
-                transition: opacity 0.2s ease;
-            }
-
-            .footer-logo:hover { opacity: 0.7; }
-
-            /* ── RESPONSIVE ── */
-            @media (max-width: 768px) {
-                .nav-links {
-                    display: none;
-                    position: absolute;
-                    top: 64px; left: 0; right: 0;
-                    background: var(--white);
-                    flex-direction: column;
-                    padding: 1.5rem 2rem;
-                    gap: 1.25rem;
-                    border-bottom: 1px solid var(--gray-light);
-                }
-
-                .nav-links.open { display: flex; }
-                .nav-toggle { display: block; }
-
-                .page-header h1 { font-size: 2rem; }
-
-                .course-details {
-                    grid-template-columns: 1fr;
-                    gap: 1rem;
-                }
-
-                .footer-inner {
-                    flex-direction: column;
-                    text-align: center;
-                }
-            }
-
-            /* ── ANIMATIONS ── */
-            @media (prefers-reduced-motion: no-preference) {
-                .fade-in {
-                    opacity: 0;
-                    transform: translateY(16px);
-                    transition: opacity 0.6s ease, transform 0.6s ease;
-                }
-                .fade-in.visible {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        </style>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <!-- NAV -->
@@ -481,8 +64,7 @@
 
         <!-- PAGE HEADER -->
         <div class="page-header fade-in">
-            <h1>Shoemaking Workshop</h1>
-            <p>A hands-on course in traditional shoemaking, open to artists, makers, and creative people on Salt Spring Island.</p>
+            <h1>Learn Traditional Shoemaking on Salt Spring Island</h1>
             <div class="header-line"></div>
         </div>
 
@@ -493,30 +75,47 @@
                     <div class="course-detail">
                         <div class="label">Duration</div>
                         <div class="value">5 Days</div>
-                        <div class="note">+ 1 day for last forming</div>
+                        <div class="note">9am - 5pm *</div>
                     </div>
                     <div class="course-detail">
                         <div class="label">Cost</div>
-                        <div class="value">$300</div>
-                        <div class="note">Materials only (subsidized by the Wilding Foundation)</div>
+                        <div class="value"><s style="color: var(--gray-mid); font-weight: 400;">$2,800</s> $300</div>
+                        <div class="note">Subsidized by the Wilding Foundation</div>
                     </div>
                     <div class="course-detail">
-                        <div class="label">Regular Price</div>
-                        <div class="value"><s style="color: var(--gray-mid); font-weight: 400;">$2,800</s></div>
-                        <div class="note">Foundation-subsidized for 2026</div>
+                        <div class="label">Class Size</div>
+                        <div class="value">3 Students</div>
+                        <div class="note">2 classes per month</div>
                     </div>
                 </div>
 
-                <p class="course-desc fade-in">
-                    The Wilding Foundation is offering a subsidized shoemaking workshop on Salt Spring Island. Over five intensive days, participants will learn the fundamentals of traditional shoemaking, from pattern drafting and leather cutting through lasting, stitching, and finishing. An additional day beforehand is dedicated to last forming, where each participant will prepare the custom lasts used throughout the course.
-                </p>
-                <p class="course-desc fade-in">
-                    We are looking for artists, craftspeople, and other creative individuals, especially those with a background in making things by hand. No prior shoemaking experience is required. More details about the workshop schedule and materials will be posted here soon.
-                </p>
+                <p class="apply-cta fade-in"><a href="#apply">Skip to application form</a></p>
 
-                <div class="course-note fade-in">
-                    <strong>Commitment:</strong> Applicants must be available for all 5 days of the workshop, plus the additional last-forming day held beforehand. This program is made possible by the Wilding Foundation, which is covering the majority of the course cost so that it remains accessible to creative people regardless of financial means.
+                <div class="fade-in">
+                    <p class="course-desc">
+                        Have you ever wanted to make your own pair of leather shoes? Now is your chance. The Wilding Foundation is offering shoemaking workshops on Salt Spring Island designed for artists, craftspeople, and creative individuals interested in learning the craft of traditional shoemaking. Limited to 3 participants per class with 2 classes per month, ensuring close mentorship and hands-on attention throughout the course. Each day runs from 9am to 5pm. This program is done in collaboration with the Salt Spring Island Public Library.
+                    </p>
+                    <p class="course-desc">
+                        Over five intensive days, participants will learn the fundamentals of handmade footwear, including pattern drafting, leather selection and cutting, lasting and shaping, leather sewing, and finishing techniques.
+                    </p>
+                    <p class="course-desc">
+                        By the end of the workshop, participants will have gained a solid foundation in traditional shoemaking and leave with their own pair of handmade shoes!
+                    </p>
+                    <p class="course-desc course-desc-note">
+                        * A half day before the course starts may be required so the student can come in to take measurements of their foot and customize the shoe form. We won't have time to do this during the week of classes.
+                    </p>
                 </div>
+
+                <div class="shoe-gallery fade-in">
+                    <img src="img/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" loading="lazy" />
+                    <img src="img/shoes-heels.jpg" alt="Handmade white leather heels with printed detail" loading="lazy" />
+                    <img src="img/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" loading="lazy" />
+                </div>
+
+                <div class="course-note course-note-primary fade-in">
+                    <strong>Who should apply:</strong> We are looking for artists, makers, and creative practitioners. This opportunity is especially suited to people with experience in craft disciplines such as woodworking, textiles, leatherwork, metalwork, sculpture, or other material-based practices. No prior shoemaking experience is required. Curiosity, patience, and an interest in learning a new craft are the most important qualifications.
+                </div>
+
             </div>
         </section>
 
@@ -524,9 +123,9 @@
         <section class="form-section" id="apply">
             <div class="form-inner">
                 <h2 class="fade-in">Apply</h2>
-                <p class="fade-in">Space is limited. Tell us a bit about yourself and why you're interested.</p>
+                <p class="fade-in">Applications are now open. With only three spots per class, demand is high and there is a standing waitlist. Tell us about yourself and your interest in the workshop. Selected participants will be notified as seats become available.</p>
 
-                <form id="applicationForm" action="submit-application.php" method="POST">
+                <form id="applicationForm" action="/submit-application" method="POST">
                     <div class="form-group fade-in">
                         <label for="name">Full name <span class="required">*</span></label>
                         <input type="text" id="name" name="name" required autocomplete="name" />
@@ -538,16 +137,63 @@
                     </div>
 
                     <div class="form-group fade-in">
+                        <label for="phone">Phone number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+                    </div>
+
+                    <div class="form-group fade-in">
                         <label for="background">Creative or artistic background <span class="required">*</span></label>
                         <span class="hint">What kind of art, craft, or creative work do you do? Tell us about projects you've been involved in.</span>
                         <textarea id="background" name="background" required></textarea>
                     </div>
 
                     <div class="form-group fade-in">
-                        <label for="interest">Why are you interested in shoemaking? <span class="required">*</span></label>
-                        <span class="hint">What draws you to this workshop? What do you hope to learn or create?</span>
-                        <textarea id="interest" name="interest" required></textarea>
+                        <label for="draws_you">What draws you to learning traditional shoemaking at this stage of your creative practice? <span class="required">*</span></label>
+                        <textarea id="draws_you" name="draws_you" required></textarea>
                     </div>
+
+                    <!-- Salt Spring residency -->
+                    <fieldset class="form-group fade-in">
+                        <legend>Do you live on Salt Spring Island? <span class="required">*</span></legend>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="on_island" value="yes" required />
+                                Yes
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="on_island" value="no" />
+                                No
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group fade-in reveal-field" id="travelGroup">
+                        <label for="travel">If no, will you be able to arrange your own travel and accommodation?</label>
+                        <textarea id="travel" name="travel" placeholder="Please describe your plans for getting to Salt Spring and where you intend to stay."></textarea>
+                    </div>
+
+                    <!-- Applicant type -->
+                    <fieldset class="form-group fade-in">
+                        <legend>Are you applying as: <span class="required">*</span></legend>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="applicant_type" value="emerging" required />
+                                Emerging maker / artist
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="applicant_type" value="established" />
+                                Established maker / artist
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="applicant_type" value="hobbyist" />
+                                Hobbyist / enthusiast
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="applicant_type" value="other" />
+                                Other
+                            </label>
+                        </div>
+                    </fieldset>
 
                     <div class="form-group checkbox-group fade-in">
                         <input type="checkbox" id="commitment" name="commitment" required />
@@ -580,62 +226,60 @@
             </div>
         </footer>
 
+        <script src="main.js"></script>
         <script>
-            // Navbar scroll effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 10);
-            });
+            // Show/hide travel question based on residency answer
+            (function () {
+                var radios = document.querySelectorAll('input[name="on_island"]');
+                var travelGroup = document.getElementById("travelGroup");
 
-            // Mobile menu toggle
-            const navToggle = document.getElementById('navToggle');
-            const navLinks = document.getElementById('navLinks');
-            navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => navLinks.classList.remove('open'));
-            });
-
-            // Scroll-triggered fade-in
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                radios.forEach(function (radio) {
+                    radio.addEventListener("change", function () {
+                        var show = document.querySelector('input[name="on_island"][value="no"]').checked;
+                        travelGroup.classList.toggle("reveal-field-open", show);
+                    });
                 });
-            }, { threshold: 0.15 });
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            })();
 
             // Form submission via fetch
-            const form = document.getElementById('applicationForm');
-            const successMsg = document.getElementById('successMsg');
-            const errorMsg = document.getElementById('errorMsg');
+            (function () {
+                var form = document.getElementById("applicationForm");
+                var successMsg = document.getElementById("successMsg");
+                var errorMsg = document.getElementById("errorMsg");
 
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                successMsg.style.display = 'none';
-                errorMsg.style.display = 'none';
+                form.addEventListener("submit", async function (e) {
+                    e.preventDefault();
+                    successMsg.style.display = "none";
+                    errorMsg.style.display = "none";
 
-                const submitBtn = form.querySelector('.btn-submit');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Submitting\u2026';
+                    var submitBtn = form.querySelector(".btn-submit");
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Submitting\u2026";
 
-                try {
-                    const response = await fetch('submit-application.php', {
-                        method: 'POST',
-                        body: new FormData(form)
-                    });
+                    try {
+                        var response = await fetch("/submit-application", {
+                            method: "POST",
+                            body: new FormData(form),
+                        });
 
-                    if (response.ok) {
-                        successMsg.style.display = 'block';
-                        form.reset();
-                    } else {
-                        errorMsg.style.display = 'block';
+                        if (response.ok) {
+                            successMsg.style.display = "block";
+                            form.reset();
+                            document.getElementById("travelGroup").classList.remove("reveal-field-open");
+                            submitBtn.textContent = "Application submitted";
+                            successMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+                            return;
+                        } else {
+                            errorMsg.style.display = "block";
+                        }
+                    } catch (err) {
+                        errorMsg.style.display = "block";
                     }
-                } catch (err) {
-                    errorMsg.style.display = 'block';
-                }
 
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit application';
-            });
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit application";
+                });
+            })();
         </script>
     </body>
 </html>

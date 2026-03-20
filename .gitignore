@@ -1,2 +1,10 @@
 tmp/
-
+node_modules/
+.wrangler/
+.DS_Store
+*.tmp
+.~lock.*
+package.json
+package-lock.json
+currentsite/
+*.webarchive
