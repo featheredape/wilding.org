@@ -1,0 +1,34 @@
+---
+const currentPath = Astro.url.pathname;
+
+const links = [
+  { href: "/news", label: "News" },
+  { href: "/#fablab", label: "FabLab" },
+  { href: "/workshops", label: "Workshops" },
+  { href: "/#robotics", label: "Robotics" },
+  { href: "/#catalyst", label: "Catalyst" },
+  { href: "/about", label: "About" },
+];
+---
+<nav>
+    <div class="nav-inner">
+        <a href="/">
+            <img src="/wflogo_main.svg" alt="Wilding Foundation" class="nav-logo" />
+        </a>
+        <ul class="nav-links" id="navLinks">
+            {links.map((link) => (
+                <li>
+                    <a
+                        href={link.href}
+                        class:list={[{ active: currentPath.startsWith(link.href) && !link.href.includes("#") }]}
+                    >
+                        {link.label}
+                    </a>
+                </li>
+            ))}
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>

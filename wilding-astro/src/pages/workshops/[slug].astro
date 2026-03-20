@@ -1,0 +1,206 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const workshops = await getCollection("workshops");
+  return workshops.map((ws) => ({
+    params: { slug: ws.id },
+    props: { workshop: ws },
+  }));
+}
+
+const { workshop } = Astro.props;
+const { Content } = await render(workshop);
+---
+<Base
+  title={`${workshop.data.title} - The Wilding Foundation`}
+  description={workshop.data.description}
+  canonicalPath={`/workshops/${workshop.id}`}
+>
+    <div class="page-header fade-in">
+        <h1>{workshop.data.title}</h1>
+        <p>{workshop.data.description}</p>
+        <div class="header-line"></div>
+    </div>
+
+    <section style="padding: 0 2rem 3rem;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            {(workshop.data.duration || workshop.data.cost || workshop.data.spots) && (
+                <div class="workshop-details-grid fade-in">
+                    {workshop.data.duration && (
+                        <div class="workshop-detail">
+                            <div class="label">Duration</div>
+                            <div class="value">{workshop.data.duration}</div>
+                        </div>
+                    )}
+                    {workshop.data.cost && (
+                        <div class="workshop-detail">
+                            <div class="label">Cost</div>
+                            <div class="value" set:html={workshop.data.cost} />
+                        </div>
+                    )}
+                    {workshop.data.spots && (
+                        <div class="workshop-detail">
+                            <div class="label">Class Size</div>
+                            <div class="value">{workshop.data.spots} Students</div>
+                        </div>
+                    )}
+                </div>
+            )}
+
+            <div class="content-card fade-in" style="max-width: 900px;">
+                <Content />
+            </div>
+
+            {workshop.data.hasApplicationForm && (
+                <div id="apply" class="fade-in" style="margin-top: 2rem;">
+                    <div class="form-card" style="max-width: 900px;">
+                        <h2>Apply</h2>
+                        <p>Applications are now open. With limited spots, demand is high. Tell us about yourself and your interest in the workshop. Selected participants will be notified as seats become available.</p>
+
+                        <form id="applicationForm" action="/submit-application" method="POST">
+                            <div class="form-group">
+                                <label for="name">Full name <span class="required">*</span></label>
+                                <input type="text" id="name" name="name" required autocomplete="name" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required autocomplete="email" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone number <span class="required">*</span></label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="background">Creative or artistic background <span class="required">*</span></label>
+                                <span class="hint">What kind of art, craft, or creative work do you do? Tell us about projects you've been involved in.</span>
+                                <textarea id="background" name="background" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="draws_you">What draws you to this workshop? <span class="required">*</span></label>
+                                <textarea id="draws_you" name="draws_you" required></textarea>
+                            </div>
+
+                            <fieldset class="form-group">
+                                <legend>Do you live on Salt Spring Island? <span class="required">*</span></legend>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="on_island" value="yes" required />
+                                        Yes
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="on_island" value="no" />
+                                        No
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group reveal-field" id="travelGroup">
+                                <label for="travel">If no, will you be able to arrange your own travel and accommodation?</label>
+                                <textarea id="travel" name="travel" placeholder="Please describe your plans for getting to Salt Spring and where you intend to stay."></textarea>
+                            </div>
+
+                            <fieldset class="form-group">
+                                <legend>Are you applying as: <span class="required">*</span></legend>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="applicant_type" value="emerging" required />
+                                        Emerging maker / artist
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="applicant_type" value="established" />
+                                        Established maker / artist
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="applicant_type" value="hobbyist" />
+                                        Hobbyist / enthusiast
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="applicant_type" value="other" />
+                                        Other
+                                    </label>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="commitment" name="commitment" required />
+                                <label for="commitment">
+                                    I can commit to attending all scheduled days of the workshop. <span class="required">*</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn-primary">Submit application</button>
+
+                            <div class="form-message success" id="successMsg">
+                                <strong>Application received.</strong> Thank you for your interest. We will review your application and be in touch by email.
+                            </div>
+                            <div class="form-message error" id="errorMsg">
+                                <strong>Something went wrong.</strong> Please try again, or email us directly at <a href="mailto:info@wilding.org">info@wilding.org</a>.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            <div style="margin-top: 2rem;">
+                <a href="/workshops" class="btn-outline">&larr; All workshops</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        // Travel reveal
+        var radios = document.querySelectorAll('input[name="on_island"]');
+        var travelGroup = document.getElementById("travelGroup");
+        if (radios.length && travelGroup) {
+            radios.forEach(function (radio) {
+                radio.addEventListener("change", function () {
+                    var show = document.querySelector('input[name="on_island"][value="no"]');
+                    travelGroup.classList.toggle("reveal-field-open", show && (show as HTMLInputElement).checked);
+                });
+            });
+        }
+
+        // Form submission
+        var form = document.getElementById("applicationForm") as HTMLFormElement;
+        if (form) {
+            var successMsg = document.getElementById("successMsg");
+            var errorMsg = document.getElementById("errorMsg");
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                if (successMsg) successMsg.style.display = "none";
+                if (errorMsg) errorMsg.style.display = "none";
+
+                var btn = form.querySelector(".btn-primary") as HTMLButtonElement;
+                btn.disabled = true;
+                btn.textContent = "Submitting\u2026";
+
+                try {
+                    var res = await fetch("/submit-application", {
+                        method: "POST",
+                        body: new FormData(form),
+                    });
+                    if (res.ok) {
+                        if (successMsg) { successMsg.style.display = "block"; successMsg.scrollIntoView({ behavior: "smooth", block: "center" }); }
+                        form.reset();
+                        if (travelGroup) travelGroup.classList.remove("reveal-field-open");
+                        btn.textContent = "Application submitted";
+                        return;
+                    }
+                    if (errorMsg) errorMsg.style.display = "block";
+                } catch (_) {
+                    if (errorMsg) errorMsg.style.display = "block";
+                }
+                btn.disabled = false;
+                btn.textContent = "Submit application";
+            });
+        }
+    })();
+    </script>
+</Base>

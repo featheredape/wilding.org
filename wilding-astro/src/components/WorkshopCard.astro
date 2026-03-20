@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date?: string;
+  time?: string;
+  spots?: number;
+  slug: string;
+  hasApplicationForm?: boolean;
+}
+
+const { title, description, category, date, time, spots, slug, hasApplicationForm } = Astro.props;
+const linkHref = hasApplicationForm ? `/workshops/${slug}` : `/workshops/${slug}`;
+---
+<div class="card span-4">
+    <span class="ws-tag">{category}</span>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    {(date || time || spots) && (
+        <div class="ws-meta">
+            {date && <span>{date}</span>}
+            {time && <span>{time}</span>}
+            {spots && <span>{spots} spots</span>}
+        </div>
+    )}
+    <a href={linkHref} class="btn-sm">
+        {hasApplicationForm ? "Apply" : "Learn more"}
+    </a>
+</div>

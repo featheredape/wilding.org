@@ -1,0 +1,49 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const news = await getCollection("news");
+  return news.map((article) => ({
+    params: { slug: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+<Base
+  title={`${article.data.title} - The Wilding Foundation`}
+  description={article.data.description}
+  ogImage={article.data.image || "/img/og-image.png"}
+  ogType="article"
+  canonicalPath={`/news/${article.id}`}
+>
+    {article.data.image && (
+        <div class="article-hero">
+            <img
+                src={article.data.image}
+                alt={article.data.imageAlt || article.data.title}
+                class="article-image"
+            />
+        </div>
+    )}
+
+    <div class="article-body">
+        <span class="article-tag">{article.data.tag}</span>
+        <h1>{article.data.title}</h1>
+        <div class="article-meta">{article.data.date}</div>
+        <div class="article-content">
+            <Content />
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            {article.data.externalUrl && (
+                <a href={article.data.externalUrl} class="btn-primary" target="_blank" rel="noopener">
+                    Read original article
+                </a>
+            )}
+            <a href="/news" class="btn-outline">&larr; All news</a>
+        </div>
+    </div>
+</Base>

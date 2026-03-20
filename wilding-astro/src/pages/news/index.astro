@@ -1,0 +1,46 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const allNews = await getCollection("news");
+const sorted = allNews.sort(
+  (a, b) => b.data.sortDate.localeCompare(a.data.sortDate)
+);
+
+const byYear = new Map<number, typeof sorted>();
+for (const article of sorted) {
+  const year = article.data.year;
+  const group = byYear.get(year) ?? [];
+  group.push(article);
+  byYear.set(year, group);
+}
+
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+<Base title="News & Media - The Wilding Foundation" canonicalPath="/news">
+    <div class="page-header fade-in">
+        <h1>News &amp; Media</h1>
+        <p>Coverage of the Wilding Foundation and the programs we support on Salt Spring Island.</p>
+        <div class="header-line"></div>
+    </div>
+
+    <section class="news-page-section">
+        <div class="news-page-inner">
+            {years.map((year) => (
+                <>
+                    <h2 class="news-year-heading fade-in">{year}</h2>
+                    {byYear.get(year)!.map((article) => (
+                        <div class="news-page-item fade-in">
+                            <span class="date">{article.data.date}</span>
+                            <div>
+                                <a href={`/news/${article.id}`}>{article.data.title}</a>
+                                <p>{article.data.description}</p>
+                                <span class="news-tag">{article.data.tag}</span>
+                            </div>
+                        </div>
+                    ))}
+                </>
+            ))}
+        </div>
+    </section>
+</Base>

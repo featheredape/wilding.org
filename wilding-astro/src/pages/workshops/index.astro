@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import WorkshopCard from "../../components/WorkshopCard.astro";
+import { getCollection } from "astro:content";
+
+const allWorkshops = await getCollection("workshops");
+const sorted = allWorkshops.sort((a, b) => {
+  const da = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const db = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return da - db;
+});
+---
+<Base title="Workshops - The Wilding Foundation" canonicalPath="/workshops">
+    <div class="page-header fade-in">
+        <h1>Workshops</h1>
+        <p>Hands-on learning open to the whole island. All workshops are free or heavily subsidized.</p>
+        <div class="header-line"></div>
+    </div>
+
+    <section style="padding: 1rem 2rem 4rem;">
+        <div class="bento" style="padding: 0;">
+            {sorted.map((ws) => (
+                <WorkshopCard
+                    title={ws.data.title}
+                    description={ws.data.description}
+                    category={ws.data.category}
+                    date={ws.data.date}
+                    time={ws.data.time}
+                    spots={ws.data.spots}
+                    slug={ws.id}
+                    hasApplicationForm={ws.data.hasApplicationForm}
+                />
+            ))}
+        </div>
+    </section>
+</Base>
