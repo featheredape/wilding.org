@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockup C - Bold Typography | The Wilding Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        /* ── MOCKUP BADGE ── */
+        .mockup-badge {
+            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+            background: #1a1a1a; color: #fff; padding: 0.6rem 1.2rem;
+            border-radius: 8px; font-size: 0.8rem; font-family: "DM Sans", sans-serif;
+            font-weight: 600; letter-spacing: 0.02em;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .mockup-badge span { color: #8db860; }
+
+        :root {
+            --green-light: #8db860;
+            --green-mid: #457a2a;
+            --green-dark: #3a6b2a;
+            --green-darkest: #2c4a25;
+            --black: #111;
+            --gray-dark: #333;
+            --gray-mid: #6b6b6b;
+            --gray-light: #e5e5e5;
+            --gray-lighter: #f7f4ed;
+            --white: #ffffff;
+            --cream: #faf8f2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--black); background: var(--cream);
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .big-number {
+            font-family: "Fraunces", Georgia, serif;
+        }
+
+        /* ── NAV (transparent, minimal) ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        nav.scrolled {
+            background: rgba(250,248,242,0.95);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 3rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-wordmark {
+            font-family: "Fraunces", Georgia, serif; font-size: 0.95rem;
+            font-weight: 600; color: var(--green-darkest); text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--gray-mid); font-size: 0.82rem;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--green-mid); }
+
+        /* ── HERO (large type, left-aligned) ── */
+        .hero {
+            min-height: 80vh; display: flex; align-items: flex-end;
+            padding: 0 3rem 5rem; position: relative;
+        }
+        .hero-inner { max-width: 800px; }
+        .hero-logo { max-width: 200px; margin-bottom: 2rem; opacity: 0.6; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+            letter-spacing: -0.03em; line-height: 1.08;
+            color: var(--green-darkest);
+        }
+        .hero h1 em {
+            font-style: normal; color: var(--green-mid);
+        }
+        .hero-sub {
+            margin-top: 1.5rem; font-size: 1.1rem; color: var(--gray-mid);
+            max-width: 500px; line-height: 1.8;
+        }
+        .hero-line {
+            width: 60px; height: 3px; margin-top: 2rem;
+            background: linear-gradient(90deg, var(--green-mid), var(--green-light));
+            border-radius: 2px;
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 5rem 3rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label {
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.75rem;
+        }
+
+        /* ── TWO-COL LAYOUT ── */
+        .two-col {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: start;
+        }
+        .two-col h2 {
+            font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+            line-height: 1.15; margin-bottom: 1rem; color: var(--black);
+        }
+        .two-col p {
+            font-size: 1rem; color: var(--gray-dark); line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .two-col a.text-link {
+            color: var(--green-mid); text-decoration: none; font-weight: 500;
+        }
+        .two-col a.text-link:hover { color: var(--green-dark); }
+        .two-col img {
+            width: 100%; border-radius: 12px; object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        /* ── NEWS (magazine layout) ── */
+        .news-section { background: var(--white); }
+        .news-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+            border: 1px solid var(--gray-light); border-radius: 12px;
+            overflow: hidden; margin-top: 2rem;
+        }
+        .news-feature {
+            padding: 2.5rem; background: var(--green-darkest); color: var(--white);
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .news-feature .nf-label {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--green-light); margin-bottom: 0.75rem;
+        }
+        .news-feature h3 {
+            font-size: 1.5rem; font-weight: 700; line-height: 1.2;
+            margin-bottom: 0.75rem; color: var(--white);
+        }
+        .news-feature p {
+            font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .news-feature a {
+            color: var(--green-light); text-decoration: none; font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .news-feature a:hover { text-decoration: underline; }
+        .news-sidebar { display: flex; flex-direction: column; }
+        .news-sidebar-item {
+            padding: 1.5rem 2rem; border-bottom: 1px solid var(--gray-light);
+            transition: background 0.2s;
+        }
+        .news-sidebar-item:last-child { border-bottom: none; }
+        .news-sidebar-item:hover { background: var(--gray-lighter); }
+        .ns-date { font-size: 0.7rem; color: var(--green-mid); font-weight: 500; margin-bottom: 0.25rem; }
+        .news-sidebar-item a {
+            color: var(--black); text-decoration: none; font-weight: 600;
+            font-size: 0.9rem; line-height: 1.35; transition: color 0.2s;
+        }
+        .news-sidebar-item a:hover { color: var(--green-mid); }
+        .ns-desc {
+            font-size: 0.82rem; color: var(--gray-mid); line-height: 1.5; margin-top: 0.25rem;
+        }
+        .news-more {
+            display: inline-block; margin-top: 1.5rem;
+            color: var(--green-mid); text-decoration: none; font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .news-more:hover { color: var(--green-dark); }
+
+        /* ── IMPACT (horizontal strip) ── */
+        .impact-strip {
+            display: flex; justify-content: center; gap: 4rem;
+            padding: 4rem 3rem; background: var(--green-darkest);
+        }
+        .impact-item { text-align: center; }
+        .big-number {
+            font-size: 3rem; font-weight: 800; letter-spacing: -0.03em;
+            color: var(--green-light); line-height: 1;
+        }
+        .impact-label {
+            font-size: 0.82rem; color: rgba(255,255,255,0.6);
+            margin-top: 0.5rem; line-height: 1.4;
+        }
+
+        /* ── WORKSHOPS (horizontal scroll) ── */
+        .workshops-scroll-wrap { overflow-x: auto; margin: 2rem -3rem 0 0; padding-bottom: 1rem; }
+        .workshops-scroll {
+            display: flex; gap: 1.25rem; padding-right: 3rem;
+            min-width: min-content;
+        }
+        .ws-card {
+            min-width: 300px; max-width: 340px; flex-shrink: 0;
+            border: 1px solid var(--gray-light); border-radius: 12px;
+            padding: 1.75rem; background: var(--white); transition: box-shadow 0.3s;
+        }
+        .ws-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+        .ws-tag {
+            display: inline-block; font-size: 0.62rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-mid);
+            background: rgba(141,184,96,0.1); padding: 0.2rem 0.6rem;
+            border-radius: 100px; margin-bottom: 0.6rem;
+        }
+        .ws-card h3 {
+            font-size: 1.1rem; font-weight: 700; line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+        .ws-card p {
+            font-size: 0.88rem; color: var(--gray-mid); line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        .ws-meta { font-size: 0.75rem; color: var(--gray-mid); margin-bottom: 1rem; }
+        .ws-meta span { margin-right: 1rem; }
+        .btn-primary {
+            display: inline-block; padding: 0.55rem 1.25rem;
+            background: var(--green-mid); color: var(--white); text-decoration: none;
+            font-size: 0.82rem; font-weight: 600; border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background: var(--green-dark); }
+
+        /* ── QUOTE BANNER ── */
+        .quote-banner {
+            padding: 4rem 3rem; text-align: center;
+            background: var(--gray-lighter);
+        }
+        .quote-banner blockquote {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.5rem; font-weight: 500; font-style: italic;
+            color: var(--gray-dark); max-width: 700px; margin: 0 auto;
+            line-height: 1.5; letter-spacing: -0.01em;
+        }
+        .quote-banner cite {
+            display: block; margin-top: 1rem; font-family: "DM Sans", sans-serif;
+            font-style: normal; font-size: 0.82rem; color: var(--gray-mid);
+            font-weight: 500;
+        }
+
+        /* ── NEWSLETTER ── */
+        .nl-section { padding: 5rem 3rem; text-align: center; }
+        .nl-section h2 {
+            font-size: 1.75rem; font-weight: 700; margin-bottom: 0.75rem;
+        }
+        .nl-section p { font-size: 1rem; color: var(--gray-mid); margin-bottom: 2rem; }
+        .nl-form { display: flex; gap: 0.75rem; max-width: 440px; margin: 0 auto; }
+        .nl-input {
+            flex: 1; padding: 0.8rem 1.15rem; font-family: inherit; font-size: 0.92rem;
+            border: 1px solid var(--gray-light); border-radius: 8px; background: var(--white);
+        }
+        .nl-input:focus { outline: none; border-color: var(--green-mid); }
+        .nl-btn {
+            padding: 0.8rem 1.5rem; font-family: inherit; font-size: 0.92rem;
+            font-weight: 600; background: var(--green-mid); color: var(--white);
+            border: none; border-radius: 8px; cursor: pointer;
+        }
+        .nl-btn:hover { background: var(--green-dark); }
+        .nl-note { font-size: 0.78rem; color: var(--gray-mid); margin-top: 0.75rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 3rem 3rem; border-top: 1px solid var(--gray-light);
+        }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; gap: 1rem;
+        }
+        .footer-left p { font-size: 0.82rem; color: var(--gray-mid); line-height: 1.6; }
+        .footer-logo { height: 26px; opacity: 0.35; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero { padding: 0 2rem 3rem; min-height: 60vh; }
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 4rem 2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 2rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            .impact-strip { flex-direction: column; gap: 2rem; align-items: center; }
+            .nav-links { display: none; }
+            .nav-inner { padding: 0 2rem; }
+            footer { padding: 3rem 2rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+            .fade-in.visible { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge"><span>C</span> &mdash; Bold Typography</div>
+
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-wordmark">Wilding Foundation</a>
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#fablab">FabLab</a></li>
+                <li><a href="#robotics">Robotics</a></li>
+                <li><a href="#workshops">Workshops</a></li>
+                <li><a href="#catalyst">Catalyst</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner fade-in">
+            <img src="wflogo_main.svg" alt="Wilding Foundation" class="hero-logo" />
+            <h1>Creative technology<br />for <em>everyone</em></h1>
+            <p class="hero-sub">Making artistic opportunity accessible to all on Salt Spring Island, regardless of age, background, or financial means.</p>
+            <div class="hero-line"></div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="news-section" id="news">
+        <div class="section-inner">
+            <span class="section-label fade-in">News &amp; Media</span>
+            <div class="news-grid fade-in">
+                <div class="news-feature">
+                    <span class="nf-label">Latest</span>
+                    <h3>FabLab at Five: A Growing Community Resource</h3>
+                    <p>Five years after its launch, the Salt Spring Public Library's FabLab has become a vibrant hub for creativity, learning, and innovation -- supported by more than $700,000 in Wilding Foundation funding.</p>
+                    <a href="news/fablab-five-years-aqua-2026.html">Read the full story &rarr;</a>
+                </div>
+                <div class="news-sidebar">
+                    <div class="news-sidebar-item">
+                        <div class="ns-date">Mar 2026</div>
+                        <a href="news/cyber-scorpions-2026.html">Cyber/Scorpions team thrives with community support</a>
+                        <p class="ns-desc">Top-10 finishes at six Vancouver Island tournaments.</p>
+                    </div>
+                    <div class="news-sidebar-item">
+                        <div class="ns-date">Feb 2026</div>
+                        <a href="news/fabulous-fablab-2026.html">Learning about our fabulous FabLab</a>
+                        <p class="ns-desc">ASK Salt Spring interviews FabLab administrator Ryan Shepard.</p>
+                    </div>
+                    <div class="news-sidebar-item">
+                        <div class="ns-date">2025</div>
+                        <a href="news/gustafson-ssnap-prize.html">Salt Spring's Gustafson wins top SSNAP prize</a>
+                        <p class="ns-desc">Anna Gustafson takes the top award at the sixth biennial SSNAP.</p>
+                    </div>
+                </div>
+            </div>
+            <a href="news.html" class="news-more">All coverage &rarr;</a>
+        </div>
+    </section>
+
+    <!-- IMPACT -->
+    <div class="impact-strip">
+        <div class="impact-item fade-in">
+            <div class="big-number">$700k+</div>
+            <div class="impact-label">FabLab investment<br />over five years</div>
+        </div>
+        <div class="impact-item fade-in">
+            <div class="big-number">$200k</div>
+            <div class="impact-label">Committed to<br />Catalyst Grants</div>
+        </div>
+        <div class="impact-item fade-in">
+            <div class="big-number">1,000+</div>
+            <div class="impact-label">Youth STEAM<br />participants in 2025</div>
+        </div>
+    </div>
+
+    <!-- FABLAB -->
+    <section id="fablab">
+        <div class="section-inner">
+            <div class="two-col">
+                <div class="fade-in">
+                    <span class="section-label">FabLab</span>
+                    <h2>A creative haven at the heart of the community</h2>
+                    <p>The <a href="https://saltspring.bc.libraries.coop/programs/fablab/" class="text-link">FabLab</a> at the Salt Spring Public Library is a community makerspace equipped with 3D printers, laser cutters, design software, and more. It offers islanders of all ages a place to learn, experiment, and create -- all free of charge.</p>
+                    <p>What began as a small, glass-walled room has grown into a thriving hub running six days a week at near-full capacity. In 2025, the FabLab logged over 1,100 appointments and 3,600 drop-in visits.</p>
+                    <p>Through the FabLab, the Foundation also funds free <a href="https://saltspring.bc.libraries.coop/programs/fablab-programming/" class="text-link">Child &amp; Youth STEAM programs</a> covering robotics, coding, 3D printing, and drone piloting. Registrations are regularly waitlisted.</p>
+                </div>
+                <div class="fade-in">
+                    <img src="img/ethan-julia-fablab.png" alt="Ethan and Julia at the FabLab" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <div class="quote-banner">
+        <blockquote class="fade-in">
+            &ldquo;The Fab Lab is a very special place for my neurodivergent child and for our community in general. It's not lost on me how lucky we are to have this amazing resource.&rdquo;
+        </blockquote>
+    </div>
+
+    <!-- ROBOTICS -->
+    <section id="robotics">
+        <div class="section-inner">
+            <div class="two-col">
+                <div class="fade-in">
+                    <img src="img/giss-robotics-2026.png" alt="GISS Robotics team" />
+                </div>
+                <div class="fade-in">
+                    <span class="section-label">GISS Robotics</span>
+                    <h2>Building robots, building futures</h2>
+                    <p>The Cyber/Scorpions team at Gulf Islands Secondary School brings together students from grades 8 to 12 who design, build, and compete through the annual VEX Robotics Competition.</p>
+                    <p>The team has grown steadily, fielding up to 30 students and seven independently designed robots in a single season. The Wilding Foundation helps ensure students on Salt Spring have access to hands-on engineering experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOPS -->
+    <section class="alt-bg" id="workshops" style="background: var(--gray-lighter);">
+        <div class="section-inner">
+            <span class="section-label fade-in">Workshops</span>
+            <h2 style="font-family: 'Fraunces', Georgia, serif; font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;" class="fade-in">Upcoming sessions</h2>
+            <p style="color: var(--gray-mid); margin-bottom: 0.5rem;" class="fade-in">Hands-on learning open to the whole island.</p>
+            <div class="workshops-scroll-wrap">
+                <div class="workshops-scroll">
+                    <div class="ws-card fade-in">
+                        <span class="ws-tag">FabLab</span>
+                        <h3>Introduction to 3D Printing</h3>
+                        <p>Learn to model, slice, and print your first object. No experience needed.</p>
+                        <div class="ws-meta"><span>Apr 12, 2026</span> <span>10am &ndash; 1pm</span> <span>6 spots</span></div>
+                        <a href="apply.html" class="btn-primary">Sign up</a>
+                    </div>
+                    <div class="ws-card fade-in">
+                        <span class="ws-tag">Shoemaking</span>
+                        <h3>Leather Shoemaking: Monk Strap</h3>
+                        <p>A weekend intensive covering pattern cutting, lasting, and hand-welting.</p>
+                        <div class="ws-meta"><span>Apr 26 &ndash; 27</span> <span>9am &ndash; 5pm</span> <span>8 spots</span></div>
+                        <a href="apply.html" class="btn-primary">Sign up</a>
+                    </div>
+                    <div class="ws-card fade-in">
+                        <span class="ws-tag">Youth STEAM</span>
+                        <h3>Drone Piloting for Teens</h3>
+                        <p>Fly, photograph, and map. Ages 12&ndash;18. Drones provided.</p>
+                        <div class="ws-meta"><span>May 3, 2026</span> <span>1pm &ndash; 4pm</span> <span>10 spots</span></div>
+                        <a href="apply.html" class="btn-primary">Sign up</a>
+                    </div>
+                    <div class="ws-card fade-in">
+                        <span class="ws-tag">Catalyst</span>
+                        <h3>Artist Portfolio Review</h3>
+                        <p>One-on-one feedback on grant applications with past recipients.</p>
+                        <div class="ws-meta"><span>May 10, 2026</span> <span>2pm &ndash; 5pm</span> <span>12 spots</span></div>
+                        <a href="apply.html" class="btn-primary">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALYST -->
+    <section id="catalyst">
+        <div class="section-inner">
+            <div class="two-col">
+                <div class="fade-in">
+                    <span class="section-label">Catalyst Grants</span>
+                    <h2>Helping artists finish what they started</h2>
+                    <p>Grants of $3,000 to $10,000 for visual artists across the Southern Gulf Islands and area First Nations, administered with the <a href="https://saltspringartprize.ca/grants/catalyst-grants/" class="text-link">Salt Spring National Art Prize</a>. Over two years, $100,000 committed annually.</p>
+                    <p>In its inaugural round, 16 artists were selected from approximately 45 applications, receiving funding to complete ongoing projects and explore new creative directions.</p>
+                </div>
+                <div class="fade-in" style="display: flex; align-items: center;">
+                    <div style="padding: 2rem; border-left: 3px solid var(--green-light);">
+                        <p style="font-family: 'Fraunces', Georgia, serif; font-size: 1.35rem; font-style: italic; color: var(--gray-dark); line-height: 1.45;">&ldquo;Smart arts funding&rdquo;</p>
+                        <p style="font-size: 0.82rem; color: var(--gray-mid); margin-top: 0.5rem; font-weight: 500;">Gulf Islands Driftwood editorial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="nl-section">
+        <div class="fade-in">
+            <span class="section-label">Stay Connected</span>
+            <h2>Foundation newsletter</h2>
+            <p>A monthly update on programs, community stories, and what's ahead.</p>
+            <form class="nl-form">
+                <input type="email" placeholder="Your email address" class="nl-input" />
+                <button type="submit" class="nl-btn">Subscribe</button>
+            </form>
+            <p class="nl-note">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>&copy; 2026 The Wilding Foundation</p>
+                <p>Salt Spring Island, BC &middot; Charity # 794054205 RR 0001</p>
+            </div>
+            <img src="wflogo_main.svg" alt="Wilding Foundation" class="footer-logo" />
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        var navbar = document.getElementById("navbar");
+        if (navbar) {
+            window.addEventListener("scroll", function () {
+                navbar.classList.toggle("scrolled", window.scrollY > 40);
+            });
+        }
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll(".fade-in").forEach(function (el) { observer.observe(el); });
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockup B - Card Grid | The Wilding Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ── MOCKUP BADGE ── */
+        .mockup-badge {
+            position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+            background: #1a1a1a; color: #fff; padding: 0.6rem 1.2rem;
+            border-radius: 8px; font-size: 0.8rem; font-family: "Inter", sans-serif;
+            font-weight: 600; letter-spacing: 0.02em;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .mockup-badge span { color: #8db860; }
+
+        :root {
+            --green-light: #8db860;
+            --green-mid: #457a2a;
+            --green-dark: #3a6b2a;
+            --green-darkest: #2c4a25;
+            --black: #141414;
+            --gray-dark: #333;
+            --gray-mid: #6b6b6b;
+            --gray-light: #e5e5e5;
+            --gray-lighter: #f5f5f3;
+            --white: #ffffff;
+            --radius: 14px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--black); background: var(--gray-lighter);
+            line-height: 1.7; -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .impact-number {
+            font-family: "Fraunces", Georgia, serif;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(245,245,243,0.9);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 56px;
+        }
+        .nav-logo { height: 20px; opacity: 0.65; }
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--gray-mid); font-size: 0.82rem;
+            font-weight: 500; transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--green-mid); }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 7rem 2rem 2rem; text-align: center;
+        }
+        .hero-logo { max-width: 280px; width: 100%; margin-bottom: 1rem; }
+        .hero-tagline {
+            font-size: 1rem; color: var(--gray-mid); max-width: 420px;
+            margin: 0 auto; line-height: 1.7;
+        }
+
+        /* ── BENTO GRID ── */
+        .bento {
+            max-width: 1200px; margin: 0 auto; padding: 1rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1rem;
+        }
+        .card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem; box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s, transform 0.2s;
+            overflow: hidden;
+        }
+        .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+        .card-label {
+            font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.6rem;
+        }
+        .card h2 {
+            font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em;
+            line-height: 1.25; margin-bottom: 0.75rem;
+        }
+        .card h3 {
+            font-size: 1.1rem; font-weight: 700; line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            font-size: 0.9rem; color: var(--gray-mid); line-height: 1.65;
+            margin-bottom: 0.75rem;
+        }
+        .card a.link {
+            color: var(--green-mid); text-decoration: none; font-weight: 500;
+            font-size: 0.85rem; transition: color 0.2s;
+        }
+        .card a.link:hover { color: var(--green-dark); }
+        .card img.card-image {
+            width: calc(100% + 4rem); margin: -2rem -2rem 1.5rem -2rem;
+            height: 200px; object-fit: cover;
+        }
+
+        /* Grid placement */
+        .card-news { grid-column: span 8; }
+        .card-impact { grid-column: span 4; display: flex; flex-direction: column; justify-content: center; }
+        .card-fablab { grid-column: span 7; }
+        .card-robotics { grid-column: span 5; }
+        .card-workshop-1 { grid-column: span 4; }
+        .card-workshop-2 { grid-column: span 4; }
+        .card-workshop-3 { grid-column: span 4; }
+        .card-catalyst { grid-column: span 6; }
+        .card-newsletter { grid-column: span 6; }
+
+        /* News items inside card */
+        .news-list-compact { margin-top: 0.5rem; }
+        .news-row {
+            display: flex; gap: 1rem; align-items: baseline;
+            padding: 0.75rem 0; border-bottom: 1px solid var(--gray-light);
+        }
+        .news-row:last-child { border-bottom: none; }
+        .news-row .date { font-size: 0.72rem; color: var(--green-mid); font-weight: 500; white-space: nowrap; min-width: 75px; }
+        .news-row a {
+            color: var(--black); text-decoration: none; font-weight: 600;
+            font-size: 0.88rem; transition: color 0.2s;
+        }
+        .news-row a:hover { color: var(--green-mid); }
+
+        /* Impact in card */
+        .impact-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+        .impact-item { text-align: center; }
+        .impact-number {
+            font-size: 2rem; font-weight: 700; color: var(--green-mid);
+            letter-spacing: -0.02em;
+        }
+        .impact-desc { font-size: 0.78rem; color: var(--gray-mid); }
+
+        /* Workshop card specifics */
+        .ws-tag {
+            display: inline-block; font-size: 0.62rem; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-mid);
+            background: rgba(141,184,96,0.1); padding: 0.2rem 0.55rem;
+            border-radius: 100px; margin-bottom: 0.6rem;
+        }
+        .ws-meta {
+            font-size: 0.75rem; color: var(--gray-mid); margin-bottom: 1rem;
+        }
+        .ws-meta span { margin-right: 1rem; }
+        .btn-sm {
+            display: inline-block; padding: 0.5rem 1.1rem;
+            background: var(--green-mid); color: var(--white);
+            text-decoration: none; font-size: 0.8rem; font-weight: 600;
+            border-radius: 8px; transition: background 0.2s;
+        }
+        .btn-sm:hover { background: var(--green-dark); }
+
+        /* Newsletter card */
+        .card-newsletter { background: var(--green-darkest); color: var(--white); }
+        .card-newsletter .card-label { color: var(--green-light); }
+        .card-newsletter h2 { color: var(--white); }
+        .card-newsletter p { color: rgba(255,255,255,0.65); }
+        .nl-form { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
+        .nl-input {
+            flex: 1; padding: 0.7rem 1rem; font-family: inherit; font-size: 0.88rem;
+            background: rgba(255,255,255,0.12); color: var(--white);
+            border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+        }
+        .nl-input::placeholder { color: rgba(255,255,255,0.4); }
+        .nl-input:focus { outline: none; border-color: var(--green-light); }
+        .nl-btn {
+            padding: 0.7rem 1.3rem; font-family: inherit; font-size: 0.88rem;
+            font-weight: 600; background: var(--green-light);
+            color: var(--green-darkest); border: none; border-radius: 8px; cursor: pointer;
+        }
+        .nl-btn:hover { background: #a0cc70; }
+
+        /* Quote */
+        .card-quote {
+            border-left: 3px solid var(--green-light);
+            padding-left: 1rem; margin: 0.5rem 0;
+            font-style: italic; font-size: 0.88rem;
+            color: var(--gray-mid); line-height: 1.6;
+        }
+        .card-quote-source {
+            font-style: normal; font-size: 0.75rem; color: var(--gray-mid);
+            margin-top: 0.35rem; font-weight: 500;
+        }
+
+        /* Stat pills */
+        .stat-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+        .stat-pill {
+            padding: 0.3rem 0.75rem; background: rgba(141,184,96,0.1);
+            border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        /* Footer */
+        footer { padding: 3rem 2rem; }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; gap: 1rem;
+        }
+        .footer-left p { font-size: 0.82rem; color: var(--gray-mid); line-height: 1.6; }
+        .footer-logo { height: 24px; opacity: 0.35; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .bento { grid-template-columns: 1fr; }
+            .card-news, .card-impact, .card-fablab, .card-robotics,
+            .card-workshop-1, .card-workshop-2, .card-workshop-3,
+            .card-catalyst, .card-newsletter { grid-column: span 1; }
+            .card img.card-image { height: 180px; }
+            .nav-links { display: none; }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .card { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s; }
+            .card.visible { opacity: 1; transform: translateY(0); }
+            .card.visible:hover { transform: translateY(-2px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-badge"><span>B</span> &mdash; Card Grid</div>
+
+    <nav>
+        <div class="nav-inner">
+            <img src="wflogo_main.svg" alt="Wilding Foundation" class="nav-logo" />
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#fablab">FabLab</a></li>
+                <li><a href="#robotics">Robotics</a></li>
+                <li><a href="#workshops">Workshops</a></li>
+                <li><a href="#catalyst">Catalyst</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="wflogo_main.svg" alt="The Wilding Foundation" class="hero-logo" />
+        <p class="hero-tagline">Creative technology and artistic opportunity for everyone on Salt Spring Island.</p>
+    </section>
+
+    <div class="bento">
+        <!-- NEWS -->
+        <div class="card card-news" id="news">
+            <span class="card-label">News &amp; Media</span>
+            <h2>Recent coverage</h2>
+            <div class="news-list-compact">
+                <div class="news-row">
+                    <span class="date">Mar 2026</span>
+                    <a href="news/fablab-five-years-aqua-2026.html">FabLab at Five: A Growing Community Resource</a>
+                </div>
+                <div class="news-row">
+                    <span class="date">Mar 2026</span>
+                    <a href="news/cyber-scorpions-2026.html">Cyber/Scorpions team thrives with community support</a>
+                </div>
+                <div class="news-row">
+                    <span class="date">Feb 2026</span>
+                    <a href="news/fabulous-fablab-2026.html">Learning about our fabulous FabLab</a>
+                </div>
+                <div class="news-row">
+                    <span class="date">2025</span>
+                    <a href="news/gustafson-ssnap-prize.html">Salt Spring's Gustafson wins top SSNAP prize</a>
+                </div>
+            </div>
+            <div style="margin-top: 1rem;">
+                <a href="news.html" class="link">See all coverage &rarr;</a>
+            </div>
+        </div>
+
+        <!-- IMPACT -->
+        <div class="card card-impact">
+            <span class="card-label">Impact</span>
+            <div class="impact-stack">
+                <div class="impact-item">
+                    <div class="impact-number">$700k+</div>
+                    <div class="impact-desc">FabLab investment</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">$200k</div>
+                    <div class="impact-desc">Catalyst Grants</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">1,000+</div>
+                    <div class="impact-desc">Youth participants 2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FABLAB -->
+        <div class="card card-fablab" id="fablab">
+            <img src="img/ethan-julia-fablab.png" alt="Ethan and Julia at the FabLab" class="card-image" />
+            <span class="card-label">FabLab</span>
+            <h2>A creative haven at the heart of the community</h2>
+            <p>The FabLab at the Salt Spring Public Library is a community makerspace equipped with 3D printers, laser cutters, design software, and more. It offers islanders of all ages a place to learn, experiment, and create -- all free of charge.</p>
+            <p>In 2025, the FabLab logged over 1,100 appointments and 3,600 drop-in visits, with STEAM program attendance over 1,000 participants.</p>
+            <div class="card-quote">
+                &ldquo;The Fab Lab is a very special place for my neurodivergent child and for our community in general.&rdquo;
+            </div>
+            <div class="stat-pills">
+                <span class="stat-pill">$700k+ over 5 years</span>
+                <span class="stat-pill">97% booking rate</span>
+            </div>
+        </div>
+
+        <!-- ROBOTICS -->
+        <div class="card card-robotics" id="robotics">
+            <img src="img/giss-robotics-2026.png" alt="GISS Robotics team" class="card-image" />
+            <span class="card-label">GISS Robotics</span>
+            <h2>Building robots, building futures</h2>
+            <p>The Cyber/Scorpions team brings together students from grades 8 to 12 who design, build, and compete through VEX Robotics. The team has grown to 30 students and seven independently designed robots in a single season.</p>
+            <a href="#" class="link">Learn more &rarr;</a>
+        </div>
+
+        <!-- WORKSHOPS -->
+        <div class="card card-workshop-1" id="workshops">
+            <span class="ws-tag">FabLab</span>
+            <h3>Introduction to 3D Printing</h3>
+            <p>Model, slice, and print your first object. No experience needed.</p>
+            <div class="ws-meta"><span>Apr 12</span> <span>10am&ndash;1pm</span> <span>6 spots</span></div>
+            <a href="apply.html" class="btn-sm">Sign up</a>
+        </div>
+        <div class="card card-workshop-2">
+            <span class="ws-tag">Shoemaking</span>
+            <h3>Leather Shoemaking: Monk Strap</h3>
+            <p>Weekend intensive: pattern cutting, lasting, and hand-welting.</p>
+            <div class="ws-meta"><span>Apr 26&ndash;27</span> <span>9am&ndash;5pm</span> <span>8 spots</span></div>
+            <a href="apply.html" class="btn-sm">Sign up</a>
+        </div>
+        <div class="card card-workshop-3">
+            <span class="ws-tag">Youth STEAM</span>
+            <h3>Drone Piloting for Teens</h3>
+            <p>Fly, photograph, and map. Ages 12&ndash;18. Drones provided.</p>
+            <div class="ws-meta"><span>May 3</span> <span>1pm&ndash;4pm</span> <span>10 spots</span></div>
+            <a href="apply.html" class="btn-sm">Sign up</a>
+        </div>
+
+        <!-- CATALYST -->
+        <div class="card card-catalyst" id="catalyst">
+            <span class="card-label">Catalyst Grants</span>
+            <h2>Helping artists finish what they started</h2>
+            <p>Grants of $3,000 to $10,000 for visual artists across the Southern Gulf Islands. $100,000 committed annually in partnership with the Salt Spring National Art Prize.</p>
+            <div class="card-quote">
+                &ldquo;Smart arts funding&rdquo; &mdash; a model that directly supports the working artist at the moment of greatest need.
+                <div class="card-quote-source">Gulf Islands Driftwood editorial</div>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="card card-newsletter">
+            <span class="card-label">Stay Connected</span>
+            <h2>Foundation newsletter</h2>
+            <p>A monthly update on programs, community stories, and what's ahead.</p>
+            <form class="nl-form">
+                <input type="email" placeholder="Your email" class="nl-input" />
+                <button type="submit" class="nl-btn">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-left">
+                <p>&copy; 2026 The Wilding Foundation</p>
+                <p>Salt Spring Island, BC &middot; Charity # 794054205 RR 0001</p>
+            </div>
+            <img src="wflogo_main.svg" alt="Wilding Foundation" class="footer-logo" />
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) entry.target.classList.add("visible");
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll(".card").forEach(function (el) { observer.observe(el); });
+    })();
+    </script>
+</body>
+</html>
