@@ -8,10 +8,14 @@ interface Props {
   spots?: number;
   slug: string;
   hasApplicationForm?: boolean;
+  externalUrl?: string;
 }
 
-const { title, description, category, date, time, spots, slug, hasApplicationForm } = Astro.props;
-const linkHref = hasApplicationForm ? `/workshops/${slug}` : `/workshops/${slug}`;
+const { title, description, category, date, time, spots, slug, hasApplicationForm, externalUrl } = Astro.props;
+const linkHref = hasApplicationForm
+  ? `/workshops/${slug}#apply`
+  : externalUrl || `/workshops/${slug}`;
+const isExternal = Boolean(externalUrl) && !hasApplicationForm;
 ---
 <div class="card span-4">
     <span class="ws-tag">{category}</span>
@@ -24,7 +28,7 @@ const linkHref = hasApplicationForm ? `/workshops/${slug}` : `/workshops/${slug}
             {spots && <span>{spots} spots</span>}
         </div>
     )}
-    <a href={linkHref} class="btn-sm">
+    <a href={linkHref} class="btn-sm" {...(isExternal ? { target: "_blank", rel: "noopener" } : {})}>
         {hasApplicationForm ? "Apply" : "Learn more"}
     </a>
 </div>

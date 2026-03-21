@@ -5,16 +5,13 @@ const links = [
   { href: "/news", label: "News" },
   { href: "/#fablab", label: "FabLab" },
   { href: "/workshops", label: "Workshops" },
-  { href: "/#robotics", label: "Robotics" },
   { href: "/#catalyst", label: "Catalyst" },
   { href: "/about", label: "About" },
 ];
 ---
-<nav>
+<nav data-page={currentPath}>
     <div class="nav-inner">
-        <a href="/">
-            <img src="/wflogo_main.svg" alt="Wilding Foundation" class="nav-logo" />
-        </a>
+        <a href="/" class="nav-home" id="navHome">Home</a>
         <ul class="nav-links" id="navLinks">
             {links.map((link) => (
                 <li>

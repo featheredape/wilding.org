@@ -1,11 +1,10 @@
 ---
-title: "Leather Shoemaking: Monk Strap"
+title: "Leather Shoemaking: Oxfords"
 description: "A five-day intensive workshop covering pattern cutting, lasting, and hand-welting. Leave with your own pair of handmade shoes."
 category: "Shoemaking"
-date: "Apr 26 - 27"
-time: "9am - 5pm"
-spots: 3
-cost: "<s style='color: #6b6b6b; font-weight: 400;'>$2,800</s> $300"
+cost: "$300"
+originalCost: "$2,800"
+startDate: "2026-04-26"
 duration: "5 Days"
 image: "/img/shoes/shoes-monk-strap.jpg"
 imageAlt: "Handmade brown leather monk-strap shoes"
@@ -17,14 +16,14 @@ Have you ever wanted to make your own pair of leather shoes? Now is your chance.
 
 Over five intensive days, participants will learn the fundamentals of handmade footwear, including pattern drafting, leather selection and cutting, lasting and shaping, leather sewing, and finishing techniques.
 
-By the end of the workshop, participants will have gained a solid foundation in traditional shoemaking and leave with their own pair of handmade shoes!
+By the end of the workshop, participants will have gained a solid foundation in traditional shoemaking, and leave with their own pair of handmade shoes!
 
 \* A half day before the course starts may be required so the student can come in to take measurements of their foot and customize the shoe form. We won't have time to do this during the week of classes.
 
 <div class="shoe-gallery">
-    <img src="/img/shoes/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" loading="lazy" />
-    <img src="/img/shoes/shoes-heels.jpg" alt="Handmade white leather heels with printed detail" loading="lazy" />
-    <img src="/img/shoes/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" loading="lazy" />
+    <img src="/img/shoes/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" width="1200" height="900" loading="lazy" />
+    <img src="/img/shoes/shoes-heels.jpg" alt="Handmade white leather heels with printed detail" width="1200" height="1062" loading="lazy" />
+    <img src="/img/shoes/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" width="1200" height="1234" loading="lazy" />
 </div>
 
 <div class="course-note course-note-primary">

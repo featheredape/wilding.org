@@ -61,11 +61,18 @@ const fullOgImage = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}
 
     <script>
     (function () {
-        // Navbar scroll shadow
+        // Navbar scroll shadow + Home link reveal
         var navbar = document.querySelector("nav");
+        var navHome = document.getElementById("navHome");
+        var isHomepage = navbar && navbar.getAttribute("data-page") === "/";
         if (navbar) {
+            // On subpages, show Home link immediately
+            if (!isHomepage && navHome) navHome.classList.add("visible");
             window.addEventListener("scroll", function () {
-                navbar.classList.toggle("scrolled", window.scrollY > 10);
+                var scrolled = window.scrollY > 10;
+                navbar.classList.toggle("scrolled", scrolled);
+                // On homepage, reveal Home link only after scrolling past hero
+                if (isHomepage && navHome) navHome.classList.toggle("visible", window.scrollY > 300);
             });
         }
 

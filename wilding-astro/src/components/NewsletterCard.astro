@@ -3,12 +3,54 @@
     <h2>Foundation newsletter</h2>
     <p>A monthly update on programs, community stories, and what's ahead.</p>
     <form
-        action="https://buttondown.com/api/emails/embed-subscribe/wilding-foundation"
+        id="newsletterForm"
+        action="/newsletter-subscribe"
         method="post"
-        target="popupwindow"
         class="nl-form"
     >
         <input type="email" name="email" placeholder="Your email" class="nl-input" required autocomplete="email" />
-        <button type="submit" class="nl-btn">Subscribe</button>
+        <button type="submit" class="nl-btn" id="nlBtn">Subscribe</button>
     </form>
+    <p class="nl-msg nl-success" id="nlSuccess">Check your email to confirm your subscription.</p>
+    <p class="nl-msg nl-error" id="nlError">Something went wrong. Please try again.</p>
 </div>
+
+<script>
+(function () {
+    var form = document.getElementById("newsletterForm");
+    if (!form) return;
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var btn = document.getElementById("nlBtn");
+        var success = document.getElementById("nlSuccess");
+        var error = document.getElementById("nlError");
+        if (success) success.style.display = "none";
+        if (error) error.style.display = "none";
+        if (btn) { btn.disabled = true; btn.textContent = "Subscribing..."; }
+        try {
+            var res = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+            });
+            var data = await res.json();
+            if (res.ok) {
+                if (success) {
+                    success.textContent = data.message || "Check your email to confirm your subscription.";
+                    success.style.display = "block";
+                }
+                form.reset();
+                if (btn) btn.textContent = "Check your email";
+            } else {
+                if (error) {
+                    error.textContent = data.error || "Something went wrong. Please try again.";
+                    error.style.display = "block";
+                }
+                if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
+            }
+        } catch (_) {
+            if (error) error.style.display = "block";
+            if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
+        }
+    });
+})();
+</script>

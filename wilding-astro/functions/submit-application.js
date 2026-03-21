@@ -8,8 +8,11 @@
  * Required bindings (set in Cloudflare dashboard or wrangler.toml):
  *   - APPLICATIONS (KV namespace) -- stores submissions
  *   - NOTIFY_EMAIL (env var)      -- where to send notifications
- *   - RESEND_API_KEY (env var)    -- API key for Resend (https://resend.com)
+ *   - POSTMARK_SERVER_TOKEN (env var) -- API token for Postmark (https://postmarkapp.com)
  */
+
+var VALID_ON_ISLAND = ["yes", "no"];
+var VALID_APPLICANT_TYPES = ["emerging", "established", "hobbyist", "other"];
 
 export async function onRequestPost(context) {
     var { request, env } = context;
@@ -19,6 +22,16 @@ export async function onRequestPost(context) {
         formData = await request.formData();
     } catch (_) {
         return jsonResponse(400, { error: "Invalid form data." });
+    }
+
+    // Honeypot -- if this hidden field has a value, it's a bot
+    var honeypot = (formData.get("website") || "").trim();
+    if (honeypot) {
+        // Return 200 so bots think it worked, but do nothing
+        return new Response("Application submitted successfully.", {
+            status: 200,
+            headers: { "Content-Type": "text/plain" },
+        });
     }
 
     var name = (formData.get("name") || "").trim();
@@ -31,12 +44,22 @@ export async function onRequestPost(context) {
     var applicant_type = (formData.get("applicant_type") || "").trim();
     var commitment = formData.has("commitment") ? "Yes" : "No";
 
+    // Required field validation
     if (!name || !email || !phone || !background || !draws_you) {
         return jsonResponse(400, { error: "Missing required fields." });
     }
 
     if (!isValidEmail(email)) {
         return jsonResponse(400, { error: "Invalid email address." });
+    }
+
+    // Validate enum fields
+    if (!on_island || !VALID_ON_ISLAND.includes(on_island)) {
+        return jsonResponse(400, { error: "Please select whether you live on Salt Spring Island." });
+    }
+
+    if (!applicant_type || !VALID_APPLICANT_TYPES.includes(applicant_type)) {
+        return jsonResponse(400, { error: "Please select an applicant type." });
     }
 
     var submitted = new Date().toISOString();
@@ -56,8 +79,17 @@ export async function onRequestPost(context) {
         submitted: submitted,
     };
 
+    // Check that at least one backend is configured
+    var hasStorage = Boolean(env.APPLICATIONS);
+    var hasEmail = Boolean(env.POSTMARK_SERVER_TOKEN && env.NOTIFY_EMAIL);
+
+    if (!hasStorage && !hasEmail) {
+        console.error("SUBMISSION LOST -- no storage or email configured:", JSON.stringify(submission));
+        return jsonResponse(503, { error: "Application system is temporarily unavailable. Please email info@wilding.org directly." });
+    }
+
     var stored = false;
-    if (env.APPLICATIONS) {
+    if (hasStorage) {
         try {
             await env.APPLICATIONS.put(id, JSON.stringify(submission));
             stored = true;
@@ -67,7 +99,7 @@ export async function onRequestPost(context) {
     }
 
     var emailed = false;
-    if (env.RESEND_API_KEY && env.NOTIFY_EMAIL) {
+    if (hasEmail) {
         try {
             var emailBody = [
                 "New Shoemaking Workshop Application",
@@ -90,19 +122,29 @@ export async function onRequestPost(context) {
                 "Submitted:  " + submitted,
             ].join("\n");
 
-            var res = await fetch("https://api.resend.com/emails", {
+            // Only use validated email as reply_to
+            var replyTo = isValidEmail(email) ? email : undefined;
+
+            var emailPayload = {
+                From: "Wilding Foundation <noreply@wilding.org>",
+                To: env.NOTIFY_EMAIL,
+                Subject: "New Shoemaking Workshop Application: " + name,
+                TextBody: emailBody,
+                MessageStream: "outbound",
+            };
+
+            if (replyTo) {
+                emailPayload.ReplyTo = replyTo;
+            }
+
+            var res = await fetch("https://api.postmarkapp.com/email", {
                 method: "POST",
                 headers: {
-                    Authorization: "Bearer " + env.RESEND_API_KEY,
+                    "X-Postmark-Server-Token": env.POSTMARK_SERVER_TOKEN,
                     "Content-Type": "application/json",
+                    Accept: "application/json",
                 },
-                body: JSON.stringify({
-                    from: "Wilding Foundation <noreply@wilding.org>",
-                    to: [env.NOTIFY_EMAIL],
-                    reply_to: email,
-                    subject: "New Shoemaking Workshop Application: " + name,
-                    text: emailBody,
-                }),
+                body: JSON.stringify(emailPayload),
             });
 
             emailed = res.ok;
@@ -118,11 +160,8 @@ export async function onRequestPost(context) {
         });
     }
 
-    console.log("SUBMISSION (no storage configured):", JSON.stringify(submission));
-    return new Response("Application received.", {
-        status: 200,
-        headers: { "Content-Type": "text/plain" },
-    });
+    // Both backends were configured but both failed
+    return jsonResponse(500, { error: "We could not process your application. Please try again or email info@wilding.org directly." });
 }
 
 export async function onRequestGet() {

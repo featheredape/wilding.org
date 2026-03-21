@@ -1,14 +1,13 @@
 ---
-title: "Drone Piloting for Teens"
-description: "Fly, photograph, and map. Ages 12-18. Drones provided."
+title: "FabLab Child & Youth Programs"
+description: "Free STEAM programs for ages 6-18. Design, build, and explore at the Salt Spring Library FabLab."
 category: "Youth STEAM"
-date: "May 3, 2026"
-time: "1pm - 4pm"
-spots: 10
+startDate: "2026-04-01"
 featured: true
 hasApplicationForm: false
+externalUrl: "https://saltspring.bc.libraries.coop/programs/fablab-programming/"
 ---
 
-An afternoon workshop for teens (ages 12-18) covering the basics of drone flight, aerial photography, and simple mapping techniques. All drones and equipment are provided.
+Free programs for children and youth ages 6-18 at the Salt Spring Public Library FabLab. Participants explore science, technology, engineering, arts, and mathematics by designing and constructing imaginative structures, solving themed missions, and collaborating on projects inspired by exploration and adventure.
 
-Part of the Wilding Foundation's free Child & Youth STEAM programs at the Salt Spring Public Library FabLab.
+All programs are fully funded by the Wilding Foundation and free of charge.

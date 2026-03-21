@@ -37,7 +37,12 @@ const { Content } = await render(workshop);
                     {workshop.data.cost && (
                         <div class="workshop-detail">
                             <div class="label">Cost</div>
-                            <div class="value" set:html={workshop.data.cost} />
+                            <div class="value">
+                                {workshop.data.originalCost && (
+                                    <s style="color: #6b6b6b; font-weight: 400;">{workshop.data.originalCost}</s>
+                                )}{" "}
+                                {workshop.data.cost}
+                            </div>
                         </div>
                     )}
                     {workshop.data.spots && (
@@ -60,6 +65,12 @@ const { Content } = await render(workshop);
                         <p>Applications are now open. With limited spots, demand is high. Tell us about yourself and your interest in the workshop. Selected participants will be notified as seats become available.</p>
 
                         <form id="applicationForm" action="/submit-application" method="POST">
+                            <!-- Honeypot field -- hidden from real users, filled by bots -->
+                            <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+                            </div>
+
                             <div class="form-group">
                                 <label for="name">Full name <span class="required">*</span></label>
                                 <input type="text" id="name" name="name" required autocomplete="name" />

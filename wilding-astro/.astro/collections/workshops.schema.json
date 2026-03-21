@@ -23,6 +23,12 @@
     "cost": {
       "type": "string"
     },
+    "originalCost": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "string"
+    },
     "duration": {
       "type": "string"
     },
@@ -37,6 +43,9 @@
     },
     "hasApplicationForm": {
       "type": "boolean"
+    },
+    "externalUrl": {
+      "type": "string"
     },
     "$schema": {
       "type": "string"

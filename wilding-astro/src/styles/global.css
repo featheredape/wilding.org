@@ -37,6 +37,18 @@ h1, h2, h3, .impact-number, .big-number {
 a { color: var(--green-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 a:hover { color: var(--green-dark); }
 
+/* ── FOCUS ── */
+:focus-visible {
+    outline: 2px solid var(--green-mid);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.form-group input:focus-visible, .form-group textarea:focus-visible {
+    outline: none; border-color: var(--green-mid);
+    box-shadow: 0 0 0 3px rgba(141,184,96,0.15);
+}
+.nl-input:focus-visible { outline: none; border-color: var(--green-light); }
+
 /* ── NAV ── */
 nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -51,8 +63,15 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
     display: flex; align-items: center; justify-content: space-between;
     height: 56px;
 }
-.nav-logo { height: 20px; opacity: 0.65; transition: opacity 0.2s; }
-.nav-logo:hover { opacity: 0.85; }
+.nav-home {
+    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.02em;
+    color: var(--green-mid); text-decoration: none;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+}
+.nav-home.visible {
+    opacity: 1; pointer-events: auto;
+}
 .nav-links { display: flex; gap: 1.75rem; list-style: none; }
 .nav-links a {
     text-decoration: none; color: var(--gray-mid); font-size: 0.82rem;
@@ -62,7 +81,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 
 .nav-toggle {
     display: none; background: none; border: none;
-    cursor: pointer; padding: 0.5rem;
+    cursor: pointer; padding: 0.75rem; min-width: 44px; min-height: 44px;
 }
 .nav-toggle span {
     display: block; width: 20px; height: 2px;
@@ -92,9 +111,10 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
     overflow: hidden;
 }
 .card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.card-static:hover { box-shadow: var(--shadow-sm); transform: none; }
 
 .card-label {
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.6rem;
 }
 .card h2 {
@@ -135,7 +155,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 }
 .news-row:last-child { border-bottom: none; }
 .news-row .date {
-    font-size: 0.72rem; color: var(--green-mid); font-weight: 500;
+    font-size: 0.75rem; color: var(--green-mid); font-weight: 500;
     white-space: nowrap; min-width: 75px;
 }
 .news-row a {
@@ -155,7 +175,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 
 /* ── WORKSHOP CARDS ── */
 .ws-tag {
-    display: inline-block; font-size: 0.62rem; font-weight: 600;
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--green-mid);
     background: rgba(141,184,96,0.1); padding: 0.2rem 0.55rem;
     border-radius: 100px; margin-bottom: 0.6rem;
@@ -165,7 +185,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 
 /* ── BUTTONS ── */
 .btn-sm {
-    display: inline-block; padding: 0.5rem 1.1rem;
+    display: inline-block; padding: 0.65rem 1.1rem; min-height: 44px;
     background: var(--green-mid); color: var(--white);
     text-decoration: none; font-size: 0.8rem; font-weight: 600;
     border-radius: 8px; transition: background 0.2s;
@@ -173,7 +193,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 .btn-sm:hover { background: var(--green-dark); color: var(--white); }
 
 .btn-primary {
-    display: inline-block; padding: 0.65rem 1.5rem;
+    display: inline-block; padding: 0.75rem 1.5rem; min-height: 44px;
     background: var(--green-mid); color: var(--white);
     text-decoration: none; font-size: 0.85rem; font-weight: 600;
     border-radius: 8px; transition: background 0.2s;
@@ -183,7 +203,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 .btn-primary:disabled { background: var(--gray-mid); cursor: not-allowed; }
 
 .btn-outline {
-    display: inline-block; padding: 0.55rem 1.3rem;
+    display: inline-block; padding: 0.65rem 1.3rem; min-height: 44px;
     border: 1px solid var(--gray-light); border-radius: 8px;
     color: var(--black); text-decoration: none; font-size: 0.82rem;
     font-weight: 500; transition: all 0.2s;
@@ -244,7 +264,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 .content-card a:hover { color: var(--green-dark); }
 
 .section-label {
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.6rem;
 }
 .section-heading {
@@ -298,7 +318,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
 }
 .news-tag {
     display: inline-block; margin-top: 0.35rem;
-    font-size: 0.65rem; font-weight: 500; color: var(--green-dark);
+    font-size: 0.75rem; font-weight: 500; color: var(--green-dark);
     background: rgba(141,184,96,0.12); padding: 0.15rem 0.55rem;
     border-radius: 100px;
 }
@@ -317,7 +337,7 @@ nav.scrolled { box-shadow: 0 1px 6px rgba(0,0,0,0.05); }
     max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem 4rem;
 }
 .article-tag {
-    display: inline-block; font-size: 0.65rem; font-weight: 600;
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--white); background: var(--green-mid);
     padding: 0.2rem 0.65rem; border-radius: 100px; margin-bottom: 0.75rem;
@@ -432,7 +452,7 @@ fieldset.form-group legend .required { color: var(--green-mid); }
     border-radius: 10px; text-align: center; background: var(--white);
 }
 .workshop-detail .label {
-    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--green-mid); margin-bottom: 0.35rem;
 }
 .workshop-detail .value {
@@ -443,11 +463,16 @@ fieldset.form-group legend .required { color: var(--green-mid); }
 }
 
 .shoe-gallery {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1rem; margin: 1.5rem 0;
 }
 .shoe-gallery img {
-    width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;
+    width: 100%; height: 100%; max-height: 220px;
+    aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;
+}
+@media (max-width: 600px) {
+    .shoe-gallery { grid-template-columns: 1fr; }
+    .shoe-gallery img { max-height: 260px; }
 }
 
 .course-note {
@@ -464,7 +489,7 @@ fieldset.form-group legend .required { color: var(--green-mid); }
 .card-newsletter { background: var(--green-darkest); color: var(--white); }
 .card-newsletter .card-label { color: var(--green-light); }
 .card-newsletter h2 { color: var(--white); }
-.card-newsletter p { color: rgba(255,255,255,0.65); }
+.card-newsletter p { color: rgba(255,255,255,0.78); }
 .nl-form { display: flex; gap: 0.6rem; margin-top: 0.5rem; }
 .nl-input {
     flex: 1; padding: 0.7rem 1rem; font-family: inherit; font-size: 0.88rem;
@@ -479,6 +504,17 @@ fieldset.form-group legend .required { color: var(--green-mid); }
     color: var(--green-darkest); border: none; border-radius: 8px; cursor: pointer;
 }
 .nl-btn:hover { background: #a0cc70; }
+.nl-msg { display: none; font-size: 0.82rem; margin-top: 0.5rem; }
+.nl-success { color: var(--green-light); }
+.nl-error { color: rgba(255,255,255,0.7); }
+
+/* ── WORKSHOPS LISTING ── */
+.workshops-listing { padding: 1rem 2rem 4rem; }
+.bento-flush { padding: 0; }
+
+/* ── ABOUT PAGE ── */
+.content-section-alt { background: var(--gray-lighter); }
+.content-card-transparent { background: transparent; box-shadow: none; }
 
 /* ── FOOTER ── */
 footer { padding: 3rem 2rem; }
@@ -520,6 +556,7 @@ footer { padding: 3rem 2rem; }
     }
     .card.visible { opacity: 1; transform: translateY(0); }
     .card.visible:hover { transform: translateY(-2px); }
+    .card-static.visible:hover { transform: none; }
     .fade-in {
         opacity: 0; transform: translateY(16px);
         transition: opacity 0.6s ease, transform 0.6s ease;

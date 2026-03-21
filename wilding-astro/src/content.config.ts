@@ -26,11 +26,14 @@ const workshops = defineCollection({
     time: z.string().optional(),
     spots: z.number().optional(),
     cost: z.string().optional(),
+    originalCost: z.string().optional(),
+    startDate: z.string().optional(),
     duration: z.string().optional(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     featured: z.boolean().optional(),
     hasApplicationForm: z.boolean().optional(),
+    externalUrl: z.string().optional(),
   }),
 });
 
