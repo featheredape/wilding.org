@@ -85,11 +85,12 @@ async function main() {
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
-                    From: "Wilding Foundation <newsletter@wilding.org>",
+                    From: "Wilding Foundation <info@wilding.org>",
                     To: sub.email,
                     Subject: subject,
                     HtmlBody: personalizedHtml,
-                    MessageStream: "broadcast",
+                    TextBody: htmlToPlainText(personalizedHtml),
+                    MessageStream: "newsletter",
                     Headers: [
                         { Name: "List-Unsubscribe", Value: "<" + unsubUrl + ">" },
                         { Name: "List-Unsubscribe-Post", Value: "List-Unsubscribe=One-Click" },
@@ -137,21 +138,43 @@ async function listConfirmedSubscribers() {
             break;
         }
 
-        // Fetch each subscriber's data
-        for (var key of data.result) {
-            var valRes = await fetch(baseUrl + "/values/" + encodeURIComponent(key.name), {
-                headers: { Authorization: "Bearer " + CF_API_TOKEN },
+        // Fetch subscriber data in parallel batches of 10
+        var keys = data.result;
+        for (var j = 0; j < keys.length; j += 10) {
+            var batch = keys.slice(j, j + 10);
+            var results = await Promise.all(batch.map(function (key) {
+                return fetch(baseUrl + "/values/" + encodeURIComponent(key.name), {
+                    headers: { Authorization: "Bearer " + CF_API_TOKEN },
+                }).then(function (r) { return r.json(); });
+            }));
+            results.forEach(function (sub) {
+                if (sub.confirmed) subscribers.push(sub);
             });
-            var sub = await valRes.json();
-            if (sub.confirmed) {
-                subscribers.push(sub);
-            }
         }
 
         cursor = data.result_info && data.result_info.cursor;
     } while (cursor);
 
     return subscribers;
+}
+
+function htmlToPlainText(html) {
+    return html
+        .replace(/<br\s*\/?>/gi, "\n")
+        .replace(/<\/p>/gi, "\n\n")
+        .replace(/<\/div>/gi, "\n")
+        .replace(/<\/h[1-6]>/gi, "\n\n")
+        .replace(/<a[^>]+href="([^"]*)"[^>]*>(.*?)<\/a>/gi, "$2 ($1)")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&middot;/g, "-")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
 }
 
 function unsubscribeFooter(unsubUrl) {

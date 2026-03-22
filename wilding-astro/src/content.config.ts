@@ -25,6 +25,7 @@ const workshops = defineCollection({
     date: z.string().optional(),
     time: z.string().optional(),
     spots: z.number().optional(),
+    classSize: z.number().optional(),
     cost: z.string().optional(),
     originalCost: z.string().optional(),
     startDate: z.string().optional(),

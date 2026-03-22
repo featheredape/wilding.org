@@ -51,7 +51,7 @@ function showPage(siteUrl, status) {
     var messages = {
         unsubscribed: {
             heading: "You've been unsubscribed",
-            body: "You will no longer receive the Wilding Foundation newsletter. If this was a mistake, you can resubscribe on our website.",
+            body: "You will no longer receive the Wilding Foundation newsletter. If this was a mistake, you can subscribe again on our homepage.",
         },
         invalid: {
             heading: "Invalid link",

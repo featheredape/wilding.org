@@ -12,7 +12,7 @@
         <button type="submit" class="nl-btn" id="nlBtn">Subscribe</button>
     </form>
     <p class="nl-msg nl-success" id="nlSuccess">Check your email to confirm your subscription.</p>
-    <p class="nl-msg nl-error" id="nlError">Something went wrong. Please try again.</p>
+    <p class="nl-msg nl-error" id="nlError">We couldn't subscribe you right now. Please try again in a moment.</p>
 </div>
 
 <script>
@@ -42,7 +42,7 @@
                 if (btn) btn.textContent = "Check your email";
             } else {
                 if (error) {
-                    error.textContent = data.error || "Something went wrong. Please try again.";
+                    error.textContent = data.error || "We couldn't subscribe you right now. Please try again in a moment.";
                     error.style.display = "block";
                 }
                 if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }

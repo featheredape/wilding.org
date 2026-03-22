@@ -64,11 +64,11 @@ function redirectHtml(siteUrl, status) {
         },
         expired: {
             heading: "Link expired",
-            body: "This confirmation link has expired or was already used. Please subscribe again.",
+            body: "This confirmation link has expired or was already used. Visit our homepage to subscribe again.",
         },
         invalid: {
             heading: "Invalid link",
-            body: "This confirmation link is not valid. Please subscribe again.",
+            body: "This confirmation link is not valid. Visit our homepage to subscribe again.",
         },
         error: {
             heading: "Something went wrong",

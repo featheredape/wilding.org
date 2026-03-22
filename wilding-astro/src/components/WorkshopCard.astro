@@ -13,7 +13,7 @@ interface Props {
 
 const { title, description, category, date, time, spots, slug, hasApplicationForm, externalUrl } = Astro.props;
 const linkHref = hasApplicationForm
-  ? `/workshops/${slug}#apply`
+  ? `/workshops/${slug}`
   : externalUrl || `/workshops/${slug}`;
 const isExternal = Boolean(externalUrl) && !hasApplicationForm;
 ---

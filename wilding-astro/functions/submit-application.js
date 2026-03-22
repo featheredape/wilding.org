@@ -126,7 +126,7 @@ export async function onRequestPost(context) {
             var replyTo = isValidEmail(email) ? email : undefined;
 
             var emailPayload = {
-                From: "Wilding Foundation <noreply@wilding.org>",
+                From: "Wilding Foundation <info@wilding.org>",
                 To: env.NOTIFY_EMAIL,
                 Subject: "New Shoemaking Workshop Application: " + name,
                 TextBody: emailBody,

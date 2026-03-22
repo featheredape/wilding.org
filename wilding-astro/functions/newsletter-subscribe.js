@@ -34,11 +34,25 @@ export async function onRequestPost(context) {
         return jsonResponse(503, { error: "Newsletter system is temporarily unavailable." });
     }
 
+    // Rate limit: 5 subscribe attempts per IP per minute
+    var ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    var rateKey = "rate:" + ip;
+    var rateCount = parseInt(await env.NEWSLETTER.get(rateKey) || "0", 10);
+    if (rateCount >= 5) {
+        return jsonResponse(429, { error: "Too many requests. Please try again in a minute." });
+    }
+    await env.NEWSLETTER.put(rateKey, String(rateCount + 1), { expirationTtl: 60 });
+
     // Check if already subscribed
     var existing = await env.NEWSLETTER.get("sub:" + email, { type: "json" });
     if (existing && existing.confirmed) {
         // Already confirmed -- don't leak this info, just say success
         return jsonResponse(200, { message: "Check your email to confirm your subscription." });
+    }
+
+    // Clean up old token if re-subscribing
+    if (existing && existing.token) {
+        await env.NEWSLETTER.delete("token:" + existing.token);
     }
 
     // Generate confirmation token
@@ -66,7 +80,7 @@ export async function onRequestPost(context) {
 
     if (env.POSTMARK_SERVER_TOKEN) {
         try {
-            await fetch("https://api.postmarkapp.com/email", {
+            var emailRes = await fetch("https://api.postmarkapp.com/email", {
                 method: "POST",
                 headers: {
                     "X-Postmark-Server-Token": env.POSTMARK_SERVER_TOKEN,
@@ -74,7 +88,7 @@ export async function onRequestPost(context) {
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
-                    From: "Wilding Foundation <newsletter@wilding.org>",
+                    From: "Wilding Foundation <info@wilding.org>",
                     To: email,
                     Subject: "Confirm your subscription to the Wilding Foundation newsletter",
                     HtmlBody: confirmEmailHtml(confirmUrl),
@@ -82,8 +96,14 @@ export async function onRequestPost(context) {
                     MessageStream: "outbound",
                 }),
             });
+            if (!emailRes.ok) {
+                var errBody = await emailRes.text();
+                console.error("Postmark error (" + emailRes.status + "):", errBody);
+                return jsonResponse(500, { error: "We couldn't send a confirmation email. Please try again later." });
+            }
         } catch (e) {
             console.error("Confirmation email failed:", e);
+            return jsonResponse(500, { error: "We couldn't send a confirmation email. Please try again later." });
         }
     }
 
@@ -114,7 +134,7 @@ function jsonResponse(status, body) {
         status: status,
         headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Origin": "https://wilding.org",
         },
     });
 }
