@@ -7,8 +7,8 @@ originalCost: "$2,800"
 classSize: 3
 startDate: "2026-04-26"
 duration: "5 Days"
-image: "/img/shoes/shoes-monk-strap.jpg"
-imageAlt: "Handmade brown leather monk-strap shoes"
+image: "/img/shoes/shoes-oxfords-black.jpg"
+imageAlt: "Handmade black and silver leather oxford shoes"
 featured: true
 hasApplicationForm: true
 ---
@@ -22,9 +22,9 @@ By the end of the workshop, participants will have gained a solid foundation in 
 \* A half day before the course starts may be required so you can come in to have your foot measured and your shoe form customized. We won't have time to do this during the week of classes.
 
 <div class="shoe-gallery">
-    <img src="/img/shoes/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" width="800" height="600" loading="lazy" />
-    <img src="/img/shoes/shoes-heels.jpg" alt="Handmade white leather heels with teal and gold detail" width="800" height="708" loading="lazy" />
-    <img src="/img/shoes/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" width="800" height="823" loading="lazy" />
+    <img src="/img/shoes/shoes-oxfords-black.jpg" alt="Handmade black and silver leather oxford shoes" width="800" height="800" loading="lazy" />
+    <img src="/img/shoes/shoes-saddle-olive.jpg" alt="Handmade brown and olive leather saddle shoes" width="800" height="800" loading="lazy" />
+    <img src="/img/shoes/shoes-slip-on-cream.jpg" alt="Handmade cream leather slip-on shoes" width="800" height="800" loading="lazy" />
 </div>
 
 <div class="course-note course-note-primary">
