@@ -1,6 +1,6 @@
 ---
 title: "Leather Shoemaking: Oxfords"
-description: "A five-day intensive workshop covering pattern cutting, lasting, and hand-welting. Leave with your own pair of handmade shoes."
+description: "A five-day intensive workshop covering pattern cutting, lasting, and leather sole construction. Leave with your own pair of handmade shoes."
 category: "Shoemaking"
 cost: "$300"
 originalCost: "$2,800"
@@ -22,9 +22,9 @@ By the end of the workshop, participants will have gained a solid foundation in 
 \* A half day before the course starts may be required so you can come in to have your foot measured and your shoe form customized. We won't have time to do this during the week of classes.
 
 <div class="shoe-gallery">
-    <img src="/img/shoes/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" width="1200" height="900" loading="lazy" />
-    <img src="/img/shoes/shoes-heels.jpg" alt="Handmade white leather heels with printed detail" width="1200" height="1062" loading="lazy" />
-    <img src="/img/shoes/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" width="1200" height="1234" loading="lazy" />
+    <img src="/img/shoes/shoes-monk-strap.jpg" alt="Handmade brown leather monk-strap shoes" width="800" height="600" loading="lazy" />
+    <img src="/img/shoes/shoes-heels.jpg" alt="Handmade white leather heels with teal and gold detail" width="800" height="708" loading="lazy" />
+    <img src="/img/shoes/shoes-sneaker.jpg" alt="Handmade leather high-top sneaker in teal and brown" width="800" height="823" loading="lazy" />
 </div>
 
 <div class="course-note course-note-primary">
