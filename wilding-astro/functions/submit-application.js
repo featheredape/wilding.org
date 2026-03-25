@@ -153,6 +153,20 @@ export async function onRequestPost(context) {
         }
     }
 
+    // If they opted into the newsletter, trigger a subscribe
+    var wantsNewsletter = formData.has("newsletter");
+    if (wantsNewsletter && env.NEWSLETTER) {
+        try {
+            var siteUrl = env.SITE_URL || "https://wilding.org";
+            var subUrl = siteUrl + "/newsletter-subscribe";
+            var subForm = new FormData();
+            subForm.set("email", email);
+            await fetch(subUrl, { method: "POST", body: subForm });
+        } catch (_) {
+            // Non-critical -- don't fail the application over this
+        }
+    }
+
     if (stored || emailed) {
         return new Response("Application submitted successfully.", {
             status: 200,

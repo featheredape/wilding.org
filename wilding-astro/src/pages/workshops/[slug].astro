@@ -42,6 +42,7 @@ const { Content } = await render(workshop);
                                     <s style="color: #6b6b6b; font-weight: 400;">{workshop.data.originalCost}</s>
                                 )}{" "}
                                 {workshop.data.cost}
+                                <div style="font-size: 0.72rem; font-weight: 400; color: #6b6b6b; margin-top: 0.25rem;">Subsidized by the Wilding Foundation</div>
                             </div>
                         </div>
                     )}
@@ -142,6 +143,13 @@ const { Content } = await render(workshop);
                                 <input type="checkbox" id="commitment" name="commitment" required />
                                 <label for="commitment">
                                     I can commit to attending all scheduled days of the workshop. <span class="required">*</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter" />
+                                <label for="newsletter">
+                                    Keep me in the loop -- subscribe me to the Wilding Foundation newsletter for updates on workshops, programs, and community news.
                                 </label>
                             </div>
 
