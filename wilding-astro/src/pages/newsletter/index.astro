@@ -1,0 +1,89 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const allNewsletters = await getCollection("newsletters");
+const newsletters = allNewsletters
+  .sort((a, b) => b.data.sortDate.localeCompare(a.data.sortDate));
+---
+<Base title="Newsletter - The Wilding Foundation" description="Subscribe to the Wilding Foundation newsletter and read past issues." canonicalPath="/newsletter">
+    <div class="page-header fade-in">
+        <h1>Newsletter</h1>
+        <p>A monthly update on programs, community stories, and what's ahead.</p>
+        <div class="header-line"></div>
+    </div>
+
+    <section style="padding: 0 2rem 2rem;">
+        <div class="subscribe-card fade-in">
+            <form
+                id="subscribeForm"
+                action="/newsletter-subscribe"
+                method="post"
+                class="subscribe-form"
+            >
+                <label for="email" class="subscribe-label">Email address</label>
+                <div class="nl-form">
+                    <input type="email" name="email" id="email" placeholder="Your email" class="nl-input nl-input-light" required autocomplete="email" />
+                    <button type="submit" class="nl-btn" id="subBtn">Subscribe</button>
+                </div>
+            </form>
+            <p class="nl-msg nl-success" id="subSuccess">Check your email to confirm your subscription.</p>
+            <p class="nl-msg nl-error" id="subError">We couldn't subscribe you right now. Please try again in a moment.</p>
+            <p class="subscribe-note">We respect your inbox. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    {newsletters.length > 0 && (
+        <section class="newsletter-archive fade-in">
+            <div class="newsletter-archive-inner">
+                <h2>Past issues</h2>
+                {newsletters.map((nl) => (
+                    <a href={`/newsletter/${nl.id}`} class="newsletter-archive-item">
+                        <span class="newsletter-archive-date">{nl.data.date}</span>
+                        <span class="newsletter-archive-title">{nl.data.title}</span>
+                    </a>
+                ))}
+            </div>
+        </section>
+    )}
+
+    <script>
+    (function () {
+        var form = document.getElementById("subscribeForm");
+        if (!form) return;
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            var btn = document.getElementById("subBtn");
+            var success = document.getElementById("subSuccess");
+            var error = document.getElementById("subError");
+            if (success) success.style.display = "none";
+            if (error) error.style.display = "none";
+            if (btn) { btn.disabled = true; btn.textContent = "Subscribing..."; }
+            try {
+                var res = await fetch(form.action, {
+                    method: "POST",
+                    body: new FormData(form),
+                });
+                var data = await res.json();
+                if (res.ok) {
+                    if (success) {
+                        success.textContent = data.message || "Check your email to confirm your subscription.";
+                        success.style.display = "block";
+                    }
+                    form.reset();
+                    if (btn) btn.textContent = "Check your email";
+                } else {
+                    if (error) {
+                        error.textContent = data.error || "We couldn't subscribe you right now. Please try again in a moment.";
+                        error.style.display = "block";
+                    }
+                    if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
+                }
+            } catch (_) {
+                if (error) error.style.display = "block";
+                if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
+            }
+        });
+    })();
+    </script>
+</Base>

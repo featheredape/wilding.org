@@ -1,0 +1,36 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const newsletters = await getCollection("newsletters");
+  return newsletters.map((nl) => ({
+    params: { slug: nl.id },
+    props: { newsletter: nl },
+  }));
+}
+
+const { newsletter } = Astro.props;
+const { Content } = await render(newsletter);
+---
+<Base
+  title={`${newsletter.data.title} - The Wilding Foundation`}
+  description={newsletter.data.description || "Wilding Foundation newsletter"}
+  canonicalPath={`/newsletter/${newsletter.id}`}
+>
+    <div class="page-header fade-in">
+        <span class="section-label">Newsletter</span>
+        <h1>{newsletter.data.title}</h1>
+        <p>{newsletter.data.date}</p>
+        <div class="header-line"></div>
+    </div>
+
+    <section style="padding: 0 2rem 3rem;">
+        <div class="content-card fade-in" style="max-width: 800px; margin: 0 auto;">
+            <Content />
+        </div>
+        <div style="max-width: 800px; margin: 1.5rem auto 0;">
+            <a href="/newsletter" class="btn-outline">&larr; All newsletters</a>
+        </div>
+    </section>
+</Base>

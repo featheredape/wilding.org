@@ -38,4 +38,14 @@ const workshops = defineCollection({
   }),
 });
 
-export const collections = { news, workshops };
+const newsletters = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/newsletters" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    sortDate: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
+export const collections = { news, workshops, newsletters };
