@@ -87,6 +87,24 @@ const { Content } = await render(workshop);
                                 <input type="tel" id="phone" name="phone" required autocomplete="tel" />
                             </div>
 
+                            {workshop.data.startDates && workshop.data.startDates.length > 0 && (
+                                <fieldset class="form-group">
+                                    <legend>Preferred start date <span class="required">*</span></legend>
+                                    <div class="radio-group">
+                                        {workshop.data.startDates.map((d: string) => (
+                                            <label class="radio-label">
+                                                <input type="radio" name="preferred_date" value={d} required />
+                                                {d}
+                                            </label>
+                                        ))}
+                                        <label class="radio-label">
+                                            <input type="radio" name="preferred_date" value="Put me on the list for a future class" />
+                                            Put me on the list for a future class
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            )}
+
                             <div class="form-group">
                                 <label for="background">Creative or artistic background <span class="required">*</span></label>
                                 <span class="hint">What kind of art, craft, or creative work do you do? Tell us about projects you've been involved in.</span>

@@ -5,7 +5,11 @@ category: "Shoemaking"
 cost: "$300"
 originalCost: "$2,800"
 classSize: 3
-startDate: "2026-04-26"
+date: "Apr 13 or Apr 27, 2026"
+startDate: "2026-04-13"
+startDates:
+  - "April 13 -- 17, 2026"
+  - "April 27 -- May 1, 2026"
 duration: "5 Days"
 image: "/img/shoes/shoes-oxfords-silver.jpg"
 imageAlt: "Handmade black and silver leather oxford shoes"

@@ -32,6 +32,12 @@
     "startDate": {
       "type": "string"
     },
+    "startDates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "duration": {
       "type": "string"
     },
